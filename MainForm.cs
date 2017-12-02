@@ -66,6 +66,7 @@ namespace iTunesRichPresence {
         }
 
         private void pollTimer_Tick(object sender, EventArgs e) {
+            if (_iTunes.CurrentTrack == null) return;
             if (_currentArtist == _iTunes.CurrentTrack.Artist && _currentTitle == _iTunes.CurrentTrack.Name && _currentState == _iTunes.PlayerState) return;
             _currentArtist = _iTunes.CurrentTrack.Artist;
             _currentTitle = _iTunes.CurrentTrack.Name;
