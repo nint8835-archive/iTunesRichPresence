@@ -1,5 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 
+// This file is a modified version of RPC.cs from https://github.com/cthpw103/discord-rpc-sharp
+
 namespace iTunesRichPresence {
     public class DiscordRPC {
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
