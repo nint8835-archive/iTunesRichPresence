@@ -9,6 +9,7 @@
 * Extract the zip file
 * Run iTunesRichPresence.exe
 * Start listening to music
+
 Your discord should now display your currently playing music from iTunes
 
 ## Building
