@@ -61,6 +61,9 @@ namespace iTunesRichPresence {
             if (_currentState != ITPlayerState.ITPlayerStatePlaying) {
                 presence.state = "Paused";
             }
+
+            presence.startTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() - _iTunes.PlayerPosition;
+            presence.endTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() + (_iTunes.CurrentTrack.Duration - _iTunes.PlayerPosition);
             
             DiscordRPC.Discord_UpdatePresence(ref presence);
         }
@@ -71,6 +74,7 @@ namespace iTunesRichPresence {
             _currentArtist = _iTunes.CurrentTrack.Artist;
             _currentTitle = _iTunes.CurrentTrack.Name;
             _currentState = _iTunes.PlayerState;
+            
             UpdatePresence();
         }
     }

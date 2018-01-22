@@ -2,6 +2,8 @@
 
 ![Example](example.png)
 
+![Profile Example](example_profile.png)
+
 ## Usage
 * Download latest release from [releases page](https://github.com/nint8835/iTunesRichPresence/releases)
 * Extract the zip file

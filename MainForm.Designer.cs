@@ -40,7 +40,7 @@
             // 
             // pollTimer
             // 
-            this.pollTimer.Interval = 5000;
+            this.pollTimer.Interval = 15000;
             this.pollTimer.Tick += new System.EventHandler(this.pollTimer_Tick);
             // 
             // MainForm
