@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System;
 
 // This file is a modified version of RPC.cs from https://github.com/cthpw103/discord-rpc-sharp
 
@@ -31,10 +32,11 @@ namespace iTunesRichPresence {
             public RequestCallback requestCallback;
         }
 
-        [System.Serializable]
-        public struct RichPresence {
-            public string state; /* max 128 bytes */
-            public string details; /* max 128 bytes */
+        [System.Serializable, StructLayout(LayoutKind.Sequential)]
+        public struct RichPresence
+        {
+            public IntPtr state; /* max 128 bytes */
+            public IntPtr details; /* max 128 bytes */
             public long startTimestamp;
             public long endTimestamp;
             public string largeImageKey; /* max 32 bytes */
