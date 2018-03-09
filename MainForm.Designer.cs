@@ -27,6 +27,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.infoLabel = new System.Windows.Forms.Label();
             this.pollTimer = new System.Windows.Forms.Timer(this.components);
+            this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.RightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RightClickMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // infoLabel
@@ -43,6 +47,27 @@
             this.pollTimer.Interval = 15000;
             this.pollTimer.Tick += new System.EventHandler(this.pollTimer_Tick);
             // 
+            // TrayIcon
+            // 
+            this.TrayIcon.ContextMenuStrip = this.RightClickMenu;
+            this.TrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("TrayIcon.Icon")));
+            this.TrayIcon.Text = "Rich Presence for iTunes";
+            this.TrayIcon.Visible = true;
+            // 
+            // RightClickMenu
+            // 
+            this.RightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quitToolStripMenuItem});
+            this.RightClickMenu.Name = "contextMenuStrip1";
+            this.RightClickMenu.Size = new System.Drawing.Size(98, 26);
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -53,6 +78,7 @@
             this.Name = "MainForm";
             this.Text = "Rich Presence for iTunes";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.RightClickMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -62,6 +88,9 @@
 
         private System.Windows.Forms.Label infoLabel;
         private System.Windows.Forms.Timer pollTimer;
+        private System.Windows.Forms.NotifyIcon TrayIcon;
+        private System.Windows.Forms.ContextMenuStrip RightClickMenu;
+        private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
     }
 }
 

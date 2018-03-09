@@ -22,6 +22,13 @@ namespace iTunesRichPresence {
             pollTimer.Enabled = true;
         }
 
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            this.Visible = false;
+            TrayIcon.ShowBalloonTip(300, "Application Minimized to Tray", "Right-click icon to close.", ToolTipIcon.Info);
+        }
+
         private void InitializeDiscord() {
             DiscordRPC.EventHandlers handlers = new DiscordRPC.EventHandlers {
                 readyCallback = HandleReadyCallback,
@@ -99,6 +106,14 @@ namespace iTunesRichPresence {
             _currentState = _iTunes.PlayerState;
             
             UpdatePresence();
+        }
+
+        
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TrayIcon.Dispose();
+            Application.Exit();
         }
     }
 }
