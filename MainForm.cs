@@ -33,7 +33,7 @@ namespace iTunesRichPresence {
                 errorCallback = HandleErrorCallback,
                 disconnectedCallback = HandleDisconnectedCallback
             };
-            DiscordRPC.Discord_Initialize("383816327850360843", ref handlers, true, null);
+            DiscordRPC.Initialize("383816327850360843", ref handlers, true, null);
         }
 
         private void HandleReadyCallback() {}
@@ -72,7 +72,7 @@ namespace iTunesRichPresence {
             presence.startTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() - _iTunes.PlayerPosition;
             presence.endTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() + (_iTunes.CurrentTrack.Duration - _iTunes.PlayerPosition);
             
-            DiscordRPC.Discord_UpdatePresence(ref presence);
+            DiscordRPC.UpdatePresence(presence);
         }
 
         private void pollTimer_Tick(object sender, EventArgs e) {
