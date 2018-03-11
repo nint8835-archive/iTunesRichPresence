@@ -55,9 +55,9 @@ namespace iTunesRichPresence {
             else {
                 presence.largeImageKey = "itunes_logo_big";
             }
-
+            
             if (_iTunes.CurrentPlaylist.Kind == ITPlaylistKind.ITPlaylistKindUser) {
-                presence.state = _iTunes.CurrentPlaylist.Name == "Music"
+                presence.state = ((IITUserPlaylist) _iTunes.CurrentPlaylist).SpecialKind == ITUserPlaylistSpecialKind.ITUserPlaylistSpecialKindMusic
                     ? $"Album: {_iTunes.CurrentTrack.Album}"
                     : $"Playlist: {_iTunes.CurrentPlaylist.Name}";
             }
