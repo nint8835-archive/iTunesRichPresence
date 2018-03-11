@@ -24,4 +24,4 @@ If you would like to contact me, feel free to send me an email at riley@rileyfly
 ## Credits
 * DiscordRPC.cs is taken from [https://github.com/discordapp/discord-rpc/blob/master/examples/button-clicker/Assets/DiscordRpc.cs](https://github.com/discordapp/discord-rpc/blob/master/examples/button-clicker/Assets/DiscordRpc.cs)
 * Minimizing to system tray was implemented by [MissingNO123](https://github.com/MissingNO123)
-* Unicode support and locale-independent playlist detection was implemented by [FukujiMihoko](https://github.com/FukujiMihoko)
+* Initial Unicode support and locale-independent playlist detection was implemented by [FukujiMihoko](https://github.com/FukujiMihoko)
