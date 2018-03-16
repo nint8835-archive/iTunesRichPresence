@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Windows.Forms;
 using iTunesLib;
 
@@ -46,9 +47,21 @@ namespace iTunesRichPresence {
         private void InitializeiTunes() {
             _iTunes = new iTunesApp();
         }
-        
+
+        private string truncateString(string s) {
+            var n = Encoding.Unicode.GetByteCount(s);
+            if (n <= 127) return s;
+            s = s.Substring(0, 64);
+
+            while (Encoding.Unicode.GetByteCount(s) > 127)
+                s = s.Substring(0, s.Length - 1);
+
+            return s + "...";
+        }
+
         private void UpdatePresence() {
-            var presence = new DiscordRPC.RichPresence {details = $"{_currentArtist} - {_currentTitle}"};
+            
+            var presence = new DiscordRPC.RichPresence {details = truncateString($"{_currentArtist} - {_currentTitle}")};
             if (_currentTitle == "DVNO") {
                 presence.largeImageKey = "dvno";
                 presence.smallImageKey = "itunes_logo";
@@ -59,12 +72,14 @@ namespace iTunesRichPresence {
             }
             
             if (_iTunes.CurrentPlaylist.Kind == ITPlaylistKind.ITPlaylistKindUser) {
-                presence.state = ((IITUserPlaylist) _iTunes.CurrentPlaylist).SpecialKind == ITUserPlaylistSpecialKind.ITUserPlaylistSpecialKindMusic
-                    ? $"Album: {_iTunes.CurrentTrack.Album}"
-                    : $"Playlist: {_iTunes.CurrentPlaylist.Name}";
+                presence.state = truncateString(
+                    ((IITUserPlaylist) _iTunes.CurrentPlaylist).SpecialKind == ITUserPlaylistSpecialKind.ITUserPlaylistSpecialKindMusic
+                        ? $"Album: {_iTunes.CurrentTrack.Album}"
+                        : $"Playlist: {_iTunes.CurrentPlaylist.Name}"
+                    );
             }
             else {
-                presence.state = $"Album: {_iTunes.CurrentTrack.Album}";
+                presence.state = truncateString($"Album: {_iTunes.CurrentTrack.Album}");
             }
 
             if (_currentState != ITPlayerState.ITPlayerStatePlaying) {
