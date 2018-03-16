@@ -8,9 +8,11 @@ namespace iTunesRichPresence {
         private string _currentArtist;
         private string _currentTitle;
         private ITPlayerState _currentState;
+        private int _currentPosition;
         public MainForm() {
             _currentArtist = "";
             _currentTitle = "";
+            _currentPosition = 0;
             InitializeComponent();
         }
 
@@ -68,19 +70,21 @@ namespace iTunesRichPresence {
             if (_currentState != ITPlayerState.ITPlayerStatePlaying) {
                 presence.state = "Paused";
             }
+            else {
+                presence.startTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() - _iTunes.PlayerPosition;
+                presence.endTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() + (_iTunes.CurrentTrack.Duration - _iTunes.PlayerPosition);
+            }
 
-            presence.startTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() - _iTunes.PlayerPosition;
-            presence.endTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() + (_iTunes.CurrentTrack.Duration - _iTunes.PlayerPosition);
-            
             DiscordRPC.UpdatePresence(presence);
         }
 
         private void pollTimer_Tick(object sender, EventArgs e) {
             if (_iTunes.CurrentTrack == null) return;
-            if (_currentArtist == _iTunes.CurrentTrack.Artist && _currentTitle == _iTunes.CurrentTrack.Name && _currentState == _iTunes.PlayerState) return;
+            if (_currentArtist == _iTunes.CurrentTrack.Artist && _currentTitle == _iTunes.CurrentTrack.Name && _currentState == _iTunes.PlayerState && _currentPosition == _iTunes.PlayerPosition) return;
             _currentArtist = _iTunes.CurrentTrack.Artist;
             _currentTitle = _iTunes.CurrentTrack.Name;
             _currentState = _iTunes.PlayerState;
+            _currentPosition = _iTunes.PlayerPosition;
             
             UpdatePresence();
         }
