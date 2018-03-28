@@ -19,6 +19,7 @@ Your discord should now display your currently playing music from iTunes
 
 ## Contact
 If you would like to contact me, feel free to send me an email at riley@rileyflynn.me, or join [the Discord server](https://discord.gg/57a8dqb)
+
 **Note: there are no plans for a Mac version of this software.**
 
 
