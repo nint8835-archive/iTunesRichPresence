@@ -25,22 +25,13 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.infoLabel = new System.Windows.Forms.Label();
             this.pollTimer = new System.Windows.Forms.Timer(this.components);
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.RightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideButton = new System.Windows.Forms.Button();
             this.RightClickMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // infoLabel
-            // 
-            this.infoLabel.AutoSize = true;
-            this.infoLabel.Location = new System.Drawing.Point(13, 13);
-            this.infoLabel.Name = "infoLabel";
-            this.infoLabel.Size = new System.Drawing.Size(257, 13);
-            this.infoLabel.TabIndex = 0;
-            this.infoLabel.Text = "This window needs to exist for rich presence to work.";
             // 
             // pollTimer
             // 
@@ -51,8 +42,9 @@
             // 
             this.TrayIcon.ContextMenuStrip = this.RightClickMenu;
             this.TrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("TrayIcon.Icon")));
-            this.TrayIcon.Text = "Rich Presence for iTunes";
+            this.TrayIcon.Text = "iTunesRichPresence";
             this.TrayIcon.Visible = true;
+            this.TrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIcon_MouseDoubleClick);
             // 
             // RightClickMenu
             // 
@@ -68,29 +60,37 @@
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
+            // hideButton
+            // 
+            this.hideButton.Location = new System.Drawing.Point(12, 120);
+            this.hideButton.Name = "hideButton";
+            this.hideButton.Size = new System.Drawing.Size(288, 23);
+            this.hideButton.TabIndex = 1;
+            this.hideButton.Text = "Hide to System Tray";
+            this.hideButton.UseVisualStyleBackColor = true;
+            this.hideButton.Click += new System.EventHandler(this.hideButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 40);
-            this.Controls.Add(this.infoLabel);
+            this.ClientSize = new System.Drawing.Size(312, 155);
+            this.Controls.Add(this.hideButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Rich Presence for iTunes";
+            this.Text = "iTunesRichPresence";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.RightClickMenu.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label infoLabel;
         private System.Windows.Forms.Timer pollTimer;
         private System.Windows.Forms.NotifyIcon TrayIcon;
         private System.Windows.Forms.ContextMenuStrip RightClickMenu;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
+        private System.Windows.Forms.Button hideButton;
     }
 }
 

@@ -21,13 +21,7 @@ namespace iTunesRichPresence {
             InitializeDiscord();
             InitializeiTunes();
             pollTimer.Enabled = true;
-        }
-
-        protected override void OnVisibleChanged(EventArgs e)
-        {
-            base.OnVisibleChanged(e);
-            this.Visible = false;
-            TrayIcon.ShowBalloonTip(300, "Application Minimized to Tray", "Right-click icon to close.", ToolTipIcon.Info);
+            Hide();
         }
 
         private void InitializeDiscord() {
@@ -110,6 +104,14 @@ namespace iTunesRichPresence {
         {
             TrayIcon.Dispose();
             Application.Exit();
+        }
+
+        private void TrayIcon_MouseDoubleClick(object sender, MouseEventArgs e) {
+            Show();
+        }
+
+        private void hideButton_Click(object sender, EventArgs e) {
+            Hide();
         }
     }
 }
