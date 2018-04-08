@@ -53,7 +53,7 @@ namespace iTunesRichPresence {
             if (n <= 127) return s;
             s = s.Substring(0, 64);
 
-            while (Encoding.Unicode.GetByteCount(s) > 127)
+            while (Encoding.Unicode.GetByteCount(s) > 123)
                 s = s.Substring(0, s.Length - 1);
 
             return s + "...";
