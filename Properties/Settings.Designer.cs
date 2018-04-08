@@ -22,5 +22,29 @@ namespace iTunesRichPresence.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%artist - %track")]
+        public string DetailsFormat {
+            get {
+                return ((string)(this["DetailsFormat"]));
+            }
+            set {
+                this["DetailsFormat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%playlist_type: %playlist_name")]
+        public string StateFormat {
+            get {
+                return ((string)(this["StateFormat"]));
+            }
+            set {
+                this["StateFormat"] = value;
+            }
+        }
     }
 }

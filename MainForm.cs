@@ -8,16 +8,22 @@ namespace iTunesRichPresence {
         private IiTunes _iTunes;
         private string _currentArtist;
         private string _currentTitle;
+        private string _currentPlaylist;
+        private string _currentPlaylistType;
         private ITPlayerState _currentState;
         private int _currentPosition;
         public MainForm() {
             _currentArtist = "";
             _currentTitle = "";
+            _currentPlaylist = "";
+            _currentPlaylistType = "";
             _currentPosition = 0;
             InitializeComponent();
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
+            detailsTextBox.Text = Properties.Settings.Default.DetailsFormat;
+            stateTextBox.Text = Properties.Settings.Default.StateFormat;
             InitializeDiscord();
             InitializeiTunes();
             pollTimer.Enabled = true;
@@ -42,7 +48,7 @@ namespace iTunesRichPresence {
             _iTunes = new iTunesApp();
         }
 
-        private string truncateString(string s) {
+        private static string TruncateString(string s) {
             var n = Encoding.Unicode.GetByteCount(s);
             if (n <= 127) return s;
             s = s.Substring(0, 64);
@@ -53,28 +59,34 @@ namespace iTunesRichPresence {
             return s + "...";
         }
 
+        private string RenderString(string template) {
+            return template.Replace("%artist", _currentArtist).Replace("%track", _currentTitle)
+                .Replace("%playlist_type", _currentPlaylistType).Replace("%playlist_name", _currentPlaylist);
+        }
+
         private void UpdatePresence() {
             
-            var presence = new DiscordRPC.RichPresence {details = truncateString($"{_currentArtist} - {_currentTitle}")};
-            if (_currentTitle == "DVNO") {
-                presence.largeImageKey = "dvno";
-                presence.smallImageKey = "itunes_logo";
-                presence.largeImageText = "Four capital letters, printed in gold";
-            }
-            else {
-                presence.largeImageKey = "itunes_logo_big";
-            }
-            
             if (_iTunes.CurrentPlaylist.Kind == ITPlaylistKind.ITPlaylistKindUser) {
-                presence.state = truncateString(
-                    ((IITUserPlaylist) _iTunes.CurrentPlaylist).SpecialKind == ITUserPlaylistSpecialKind.ITUserPlaylistSpecialKindMusic
-                        ? $"Album: {_iTunes.CurrentTrack.Album}"
-                        : $"Playlist: {_iTunes.CurrentPlaylist.Name}"
-                    );
+                if(((IITUserPlaylist) _iTunes.CurrentPlaylist).SpecialKind == ITUserPlaylistSpecialKind.ITUserPlaylistSpecialKindMusic){
+                    _currentPlaylistType = "Album";
+                    _currentPlaylist = _iTunes.CurrentTrack.Album;
+                }
+                else {
+                    _currentPlaylistType = "Playlist";
+                    _currentPlaylist = _iTunes.CurrentPlaylist.Name;
+                }
             }
             else {
-                presence.state = truncateString($"Album: {_iTunes.CurrentTrack.Album}");
+                _currentPlaylistType = "Album";
+                _currentPlaylist = _iTunes.CurrentTrack.Album;
             }
+
+            var presence =
+                new DiscordRPC.RichPresence {
+                    details = TruncateString(RenderString(Properties.Settings.Default.DetailsFormat)),
+                    state = TruncateString(RenderString(Properties.Settings.Default.StateFormat)),
+                    largeImageKey = "itunes_logo_big"
+                };
 
             if (_currentState != ITPlayerState.ITPlayerStatePlaying) {
                 presence.state = "Paused";
@@ -112,6 +124,16 @@ namespace iTunesRichPresence {
 
         private void hideButton_Click(object sender, EventArgs e) {
             Hide();
+        }
+
+        private void detailsTextBox_TextChanged(object sender, EventArgs e) {
+            Properties.Settings.Default.DetailsFormat = detailsTextBox.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void stateTextBox_TextChanged(object sender, EventArgs e) {
+            Properties.Settings.Default.StateFormat = stateTextBox.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }
