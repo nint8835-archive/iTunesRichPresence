@@ -117,7 +117,7 @@
             this.tokenDetailsTextBox.ReadOnly = true;
             this.tokenDetailsTextBox.Size = new System.Drawing.Size(288, 153);
             this.tokenDetailsTextBox.TabIndex = 6;
-            this.tokenDetailsTextBox.Text = "%artist: Current artist\r\n%title: Current track\r\n%playlist_type: Type of current p" +
+            this.tokenDetailsTextBox.Text = "%artist: Current artist\r\n%track: Current track\r\n%playlist_type: Type of current p" +
     "laylist (Playlist, Album, etc.)\r\n%playlist_name: Name of current playlist";
             // 
             // MainForm
