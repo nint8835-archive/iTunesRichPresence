@@ -46,5 +46,29 @@ namespace iTunesRichPresence.Properties {
                 this["StateFormat"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%artist - %track")]
+        public string PausedDetailsFormat {
+            get {
+                return ((string)(this["PausedDetailsFormat"]));
+            }
+            set {
+                this["PausedDetailsFormat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Paused")]
+        public string PausedStateFormat {
+            get {
+                return ((string)(this["PausedStateFormat"]));
+            }
+            set {
+                this["PausedStateFormat"] = value;
+            }
+        }
     }
 }

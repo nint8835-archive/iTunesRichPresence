@@ -24,6 +24,8 @@ namespace iTunesRichPresence {
         private void MainForm_Load(object sender, EventArgs e) {
             detailsTextBox.Text = Properties.Settings.Default.DetailsFormat;
             stateTextBox.Text = Properties.Settings.Default.StateFormat;
+            pausedDetailsTextBox.Text = Properties.Settings.Default.PausedDetailsFormat;
+            pausedStateTextBox.Text = Properties.Settings.Default.PausedStateFormat;
             InitializeDiscord();
             InitializeiTunes();
             pollTimer.Enabled = true;
@@ -81,17 +83,15 @@ namespace iTunesRichPresence {
                 _currentPlaylist = _iTunes.CurrentTrack.Album;
             }
 
-            var presence =
-                new DiscordRPC.RichPresence {
-                    details = TruncateString(RenderString(Properties.Settings.Default.DetailsFormat)),
-                    state = TruncateString(RenderString(Properties.Settings.Default.StateFormat)),
-                    largeImageKey = "itunes_logo_big"
-                };
+            var presence = new DiscordRPC.RichPresence {largeImageKey = "itunes_logo_big"};
 
             if (_currentState != ITPlayerState.ITPlayerStatePlaying) {
-                presence.state = "Paused";
+                presence.details = TruncateString(RenderString(Properties.Settings.Default.PausedDetailsFormat));
+                presence.state = TruncateString(RenderString(Properties.Settings.Default.PausedStateFormat));
             }
             else {
+                presence.details = TruncateString(RenderString(Properties.Settings.Default.DetailsFormat));
+                presence.state = TruncateString(RenderString(Properties.Settings.Default.StateFormat));
                 presence.startTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() - _iTunes.PlayerPosition;
                 presence.endTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() + (_iTunes.CurrentTrack.Duration - _iTunes.PlayerPosition);
             }
@@ -133,6 +133,16 @@ namespace iTunesRichPresence {
 
         private void stateTextBox_TextChanged(object sender, EventArgs e) {
             Properties.Settings.Default.StateFormat = stateTextBox.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void pausedDetailsTextBox_TextChanged(object sender, EventArgs e) {
+            Properties.Settings.Default.PausedDetailsFormat = pausedDetailsTextBox.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void pausedStateTextBox_TextChanged(object sender, EventArgs e) {
+            Properties.Settings.Default.PausedStateFormat = pausedStateTextBox.Text;
             Properties.Settings.Default.Save();
         }
     }

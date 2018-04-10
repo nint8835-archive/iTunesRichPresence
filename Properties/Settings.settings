@@ -8,5 +8,11 @@
     <Setting Name="StateFormat" Type="System.String" Scope="User">
       <Value Profile="(Default)">%playlist_type: %playlist_name</Value>
     </Setting>
+    <Setting Name="PausedDetailsFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%artist - %track</Value>
+    </Setting>
+    <Setting Name="PausedStateFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Paused</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
