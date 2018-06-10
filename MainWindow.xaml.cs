@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Threading;
 using iTunesLib;
 using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro.Controls.Dialogs;
@@ -14,15 +15,17 @@ namespace iTunesRichPresence_Rewrite {
     public partial class MainWindow {
 
         private readonly NotifyIcon _notifyIcon;
-        private IiTunes _iTunes;
+        private DiscordBridge _bridge;
 
         public MainWindow() {
             InitializeComponent();
-            _iTunes = new iTunesApp();
+
+            _bridge = new DiscordBridge("383816327850360843");
+
             _notifyIcon = new NotifyIcon {Text = "iTunesRichPresence", Visible = false, Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location)};
             _notifyIcon.MouseDoubleClick += (sender, args) => { WindowState = WindowState.Normal; };
 
-            RunOnStartupCheckbox.IsChecked = Settings.Default.RunOnStartup;
+            RunOnStartupToggleSwitch.IsChecked = Settings.Default.RunOnStartup;
         }
 
         private void MetroWindow_StateChanged(object sender, EventArgs e) {
@@ -41,8 +44,8 @@ namespace iTunesRichPresence_Rewrite {
             throw new NotImplementedException();
         }
 
-        private void RunOnStartupCheckbox_OnClick(object sender, RoutedEventArgs e) {
-            if (RunOnStartupCheckbox.IsChecked ?? false) {
+        private void RunOnStartupToggleSwitch_OnClick(object sender, RoutedEventArgs e) {
+            if (RunOnStartupToggleSwitch.IsChecked ?? false) {
                 Settings.Default.RunOnStartup = true;
                 Settings.Default.Save();
 
@@ -59,6 +62,10 @@ namespace iTunesRichPresence_Rewrite {
 
         private async void AboutButton_OnClick(object sender, RoutedEventArgs e) {
             await this.ShowMessageAsync("",$"iTunesRichPresence v{Assembly.GetExecutingAssembly().GetName().Version}\n\nDeveloped by nint8835 (Riley Flynn)\n\niTunesRichPresence uses portions of DiscordRpc by Discord, Inc. licensed under the MIT license. A copy of this license can be found in the program directory.");
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+            _bridge.Shutdown();
         }
     }
 }

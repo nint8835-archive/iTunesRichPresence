@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="iTunesRichPresence" Height="500" Width="450" ResizeMode="CanMinimize" ShowTitleBar="True" StateChanged="MetroWindow_StateChanged">
+        Title="iTunesRichPresence" Height="500" Width="450" ResizeMode="CanMinimize" ShowTitleBar="True" StateChanged="MetroWindow_StateChanged" Closing="MetroWindow_Closing">
     <Grid>
-        <CheckBox x:Name="RunOnStartupCheckbox" Content="Run on startup" HorizontalAlignment="Left" Margin="10,443,0,0" VerticalAlignment="Top" Click="RunOnStartupCheckbox_OnClick"/>
+        <controls:ToggleSwitch x:Name="RunOnStartupToggleSwitch" Header="Run on startup" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Click="RunOnStartupToggleSwitch_OnClick"/>
     </Grid>
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
