@@ -3,6 +3,7 @@ using System.Text;
 using System.Windows.Threading;
 using iTunesLib;
 using iTunesRichPresence_Rewrite.Properties;
+using SharpRaven.Data;
 
 namespace iTunesRichPresence_Rewrite {
     /// <summary>
@@ -113,7 +114,22 @@ namespace iTunesRichPresence_Rewrite {
                                             (_iTunes.CurrentTrack.Duration - _currentPosition);
                 }
             }
-            DiscordRpc.UpdatePresence(presence);
+
+            try {
+                DiscordRpc.UpdatePresence(presence);
+            }
+            catch (Exception exception) {
+                exception.Data.Add("CurrentArtist", _currentArtist);
+                exception.Data.Add("CurrentTitle", _currentTitle);
+                exception.Data.Add("CurrentState", _currentState.ToString());
+                exception.Data.Add("CurrentPlaylist", _currentPlaylist);
+                exception.Data.Add("CurrentPlaylistType", _currentPlaylistType.ToString());
+                exception.Data.Add("CurrentPosition", _currentPosition.ToString());
+                exception.Data.Add("Details", presence.details);
+                exception.Data.Add("State", presence.state);
+                Globals.RavenClient.Capture(new SentryEvent(exception));
+            }
+            
         }
 
         /// <summary>

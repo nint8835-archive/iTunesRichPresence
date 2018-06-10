@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
 using MahApps.Metro;
@@ -17,10 +18,11 @@ namespace iTunesRichPresence_Rewrite {
     public partial class App {
         protected override void OnStartup(StartupEventArgs e) {
 
-            Globals.RavenClient = new RavenClient("https://f5c5c3b871814c92bc0103ce3bdfca4a@sentry.io/1223024");
+            Globals.RavenClient = new RavenClient("https://f5c5c3b871814c92bc0103ce3bdfca4a@sentry.io/1223024") {
+                Release = Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            };
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
-            Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
 
             ThemeManager.ChangeAppStyle(Current,
                                         ThemeManager.GetAccent("Orange"),
@@ -29,7 +31,7 @@ namespace iTunesRichPresence_Rewrite {
             base.OnStartup(e);
         }
 
-        private static void CurrentOnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
+        private void CurrentOnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
             Globals.RavenClient.Capture(new SentryEvent(e.Exception));
         }
 
