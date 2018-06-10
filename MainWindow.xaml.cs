@@ -48,8 +48,8 @@ namespace iTunesRichPresence_Rewrite {
             }
         }
 
-        private void DiagnosticsButton_OnClick(object sender, RoutedEventArgs e) {
-            throw new NotImplementedException();
+        private async void DiagnosticsButton_OnClick(object sender, RoutedEventArgs e) {
+            await this.ShowMessageAsync("Not implemented", "Diagnostic features aren't implemented yet. Sorry about that.");
         }
 
         private void RunOnStartupCheckBox_OnClick(object sender, RoutedEventArgs e) {
