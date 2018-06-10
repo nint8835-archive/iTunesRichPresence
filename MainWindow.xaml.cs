@@ -1,6 +1,8 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
+using iTunesLib;
 
 namespace iTunesRichPresence_Rewrite {
     /// <summary>
@@ -9,9 +11,11 @@ namespace iTunesRichPresence_Rewrite {
     public partial class MainWindow {
 
         private readonly NotifyIcon _notifyIcon;
+        private IiTunes _iTunes;
 
         public MainWindow() {
             InitializeComponent();
+            _iTunes = new iTunesApp();
             _notifyIcon = new NotifyIcon {Text = "iTunesRichPresence", Visible = false, Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location)};
             _notifyIcon.MouseDoubleClick += (sender, args) => { WindowState = WindowState.Normal; };
         }
@@ -26,6 +30,10 @@ namespace iTunesRichPresence_Rewrite {
                 ShowInTaskbar = true;
                 _notifyIcon.Visible = false;
             }
+        }
+
+        private async void DiagnosticsButton_OnClick(object sender, RoutedEventArgs e) {
+            throw new NotImplementedException();
         }
     }
 }

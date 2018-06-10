@@ -7,5 +7,11 @@
         mc:Ignorable="d"
         Title="iTunesRichPresence" Height="500" Width="350" ResizeMode="CanMinimize" ShowTitleBar="True" StateChanged="MetroWindow_StateChanged">
     <Grid/>
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Name="DiagnosticsButton" Content="diagnostics" Click="DiagnosticsButton_OnClick"/>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+
 </controls:MetroWindow>
 
