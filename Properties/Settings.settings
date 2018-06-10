@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="iTunesRichPresence_Rewrite.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RunOnStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PlayingTopLine" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%artist - %track</Value>
+    </Setting>
+    <Setting Name="PlayingBottomLine" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%playlist_type: %playlist_name</Value>
+    </Setting>
+    <Setting Name="PausedTopLine" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%artist - %track</Value>
+    </Setting>
+    <Setting Name="PausedBottomLine" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Paused</Value>
+    </Setting>
+    <Setting Name="DisplayPlaybackDuration" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
