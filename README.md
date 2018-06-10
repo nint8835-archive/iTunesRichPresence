@@ -7,7 +7,7 @@
 ## Usage
 * Download latest release (iTunesRichPresence_64bit.zip) from [releases page](https://github.com/nint8835/iTunesRichPresence/releases)
 * Extract the zip file
-* Run iTunesRichPresence.exe
+* Run iTunesRichPresence-Rewrite.exe
 * Start listening to music
 
 Your discord should now display your currently playing music from iTunes
