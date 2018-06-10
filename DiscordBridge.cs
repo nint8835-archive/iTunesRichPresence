@@ -42,6 +42,24 @@ namespace iTunesRichPresence_Rewrite {
         }
 
         /// <summary>
+        /// Renders a string template using information about the currently playing song
+        /// </summary>
+        /// <param name="template">The template to render</param>
+        /// <returns>The rendered string</returns>
+        private string RenderString(string template) {
+            string playlistType;
+            if (_iTunes.CurrentPlaylist.Kind == ITPlaylistKind.ITPlaylistKindUser) {
+                playlistType = ((IITUserPlaylist) _iTunes.CurrentPlaylist).SpecialKind == ITUserPlaylistSpecialKind.ITUserPlaylistSpecialKindMusic ? "Album" : "Playlist";
+            }
+            else {
+                playlistType = "Album";
+            }
+
+            return template.Replace("%artist", _currentArtist).Replace("%track", _currentTitle)
+                .Replace("%playlist_name", _currentPlaylist).Replace("%playlist_type", playlistType);
+        }
+
+        /// <summary>
         /// Handles checking for playing status changes and pushing out presence updates
         /// </summary>
         /// <param name="sender">Sender of this event</param>

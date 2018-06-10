@@ -9,8 +9,8 @@ namespace iTunesRichPresence_Rewrite {
         protected override void OnStartup(StartupEventArgs e) {
 
             ThemeManager.ChangeAppStyle(Current,
-                                        ThemeManager.GetAccent("Red"),
-                                        ThemeManager.GetAppTheme("BaseDark"));
+                                        ThemeManager.GetAccent("Orange"),
+                                        ThemeManager.GetAppTheme("BaseLight"));
 
             base.OnStartup(e);
         }

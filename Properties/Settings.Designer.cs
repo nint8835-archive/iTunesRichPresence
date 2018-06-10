@@ -34,5 +34,53 @@ namespace iTunesRichPresence_Rewrite.Properties {
                 this["RunOnStartup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%artist - %track")]
+        public string PlayingTopLine {
+            get {
+                return ((string)(this["PlayingTopLine"]));
+            }
+            set {
+                this["PlayingTopLine"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%playlist_type: %playlist_name")]
+        public string PlayingBottomLine {
+            get {
+                return ((string)(this["PlayingBottomLine"]));
+            }
+            set {
+                this["PlayingBottomLine"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%artist - %track")]
+        public string PausedTopLine {
+            get {
+                return ((string)(this["PausedTopLine"]));
+            }
+            set {
+                this["PausedTopLine"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Paused")]
+        public string PausedBottomLine {
+            get {
+                return ((string)(this["PausedBottomLine"]));
+            }
+            set {
+                this["PausedBottomLine"] = value;
+            }
+        }
     }
 }

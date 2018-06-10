@@ -5,5 +5,17 @@
     <Setting Name="RunOnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="PlayingTopLine" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%artist - %track</Value>
+    </Setting>
+    <Setting Name="PlayingBottomLine" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%playlist_type: %playlist_name</Value>
+    </Setting>
+    <Setting Name="PausedTopLine" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%artist - %track</Value>
+    </Setting>
+    <Setting Name="PausedBottomLine" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Paused</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

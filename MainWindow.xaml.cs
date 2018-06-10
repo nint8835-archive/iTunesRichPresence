@@ -2,11 +2,11 @@
 using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Threading;
-using iTunesLib;
 using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
+using Clipboard = System.Windows.Clipboard;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace iTunesRichPresence_Rewrite {
     /// <summary>
@@ -15,17 +15,25 @@ namespace iTunesRichPresence_Rewrite {
     public partial class MainWindow {
 
         private readonly NotifyIcon _notifyIcon;
-        private DiscordBridge _bridge;
+        private readonly DiscordBridge _bridge;
+
+        private TextBox _lastFocusedTextBox;
 
         public MainWindow() {
             InitializeComponent();
+
+            _lastFocusedTextBox = PlayingTopLineFormatTextBox;
 
             _bridge = new DiscordBridge("383816327850360843");
 
             _notifyIcon = new NotifyIcon {Text = "iTunesRichPresence", Visible = false, Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location)};
             _notifyIcon.MouseDoubleClick += (sender, args) => { WindowState = WindowState.Normal; };
 
-            RunOnStartupToggleSwitch.IsChecked = Settings.Default.RunOnStartup;
+            RunOnStartupCheckBox.IsChecked = Settings.Default.RunOnStartup;
+            PlayingTopLineFormatTextBox.Text = Settings.Default.PlayingTopLine;
+            PlayingBottomLineFormatTextBox.Text = Settings.Default.PlayingBottomLine;
+            PausedTopLineFormatTextBox.Text = Settings.Default.PausedTopLine;
+            PausedBottomLineFormatTextBox.Text = Settings.Default.PausedBottomLine;
         }
 
         private void MetroWindow_StateChanged(object sender, EventArgs e) {
@@ -44,8 +52,8 @@ namespace iTunesRichPresence_Rewrite {
             throw new NotImplementedException();
         }
 
-        private void RunOnStartupToggleSwitch_OnClick(object sender, RoutedEventArgs e) {
-            if (RunOnStartupToggleSwitch.IsChecked ?? false) {
+        private void RunOnStartupCheckBox_OnClick(object sender, RoutedEventArgs e) {
+            if (RunOnStartupCheckBox.IsChecked ?? false) {
                 Settings.Default.RunOnStartup = true;
                 Settings.Default.Save();
 
@@ -66,6 +74,46 @@ namespace iTunesRichPresence_Rewrite {
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
             _bridge.Shutdown();
+        }
+
+        private void TrackButton_Click(object sender, RoutedEventArgs e) {
+            _lastFocusedTextBox.Text += "%track";
+        }
+
+        private void ArtistButton_Click(object sender, RoutedEventArgs e) {
+            _lastFocusedTextBox.Text += "%artist";
+        }
+
+        private void PlaylistTypeButton_Click(object sender, RoutedEventArgs e) {
+            _lastFocusedTextBox.Text += "%playlist_type";
+        }
+
+        private void PlaylistNameButton_Click(object sender, RoutedEventArgs e) {
+            _lastFocusedTextBox.Text += "%playlist_name";
+        }
+
+        private void PlayingTopLineFormatTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            Settings.Default.PlayingTopLine = PlayingTopLineFormatTextBox.Text;
+            Settings.Default.Save();
+        }
+
+        private void PlayingBottomLineFormatTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            Settings.Default.PlayingBottomLine = PlayingBottomLineFormatTextBox.Text;
+            Settings.Default.Save();
+        }
+
+        private void PausedTopLineFormatTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            Settings.Default.PausedTopLine = PausedTopLineFormatTextBox.Text;
+            Settings.Default.Save();
+        }
+
+        private void PausedBottomLineFormatTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+            Settings.Default.PausedBottomLine = PausedBottomLineFormatTextBox.Text;
+            Settings.Default.Save();
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e) {
+            _lastFocusedTextBox = e.Source as TextBox;
         }
     }
 }
