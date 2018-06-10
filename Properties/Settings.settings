@@ -17,5 +17,8 @@
     <Setting Name="PausedBottomLine" Type="System.String" Scope="User">
       <Value Profile="(Default)">Paused</Value>
     </Setting>
+    <Setting Name="DisplayPlaybackDuration" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

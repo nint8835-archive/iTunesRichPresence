@@ -82,5 +82,17 @@ namespace iTunesRichPresence_Rewrite.Properties {
                 this["PausedBottomLine"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DisplayPlaybackDuration {
+            get {
+                return ((bool)(this["DisplayPlaybackDuration"]));
+            }
+            set {
+                this["DisplayPlaybackDuration"] = value;
+            }
+        }
     }
 }

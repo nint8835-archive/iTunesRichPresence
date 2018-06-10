@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
-using Clipboard = System.Windows.Clipboard;
 using TextBox = System.Windows.Controls.TextBox;
 
 namespace iTunesRichPresence_Rewrite {
@@ -34,6 +33,7 @@ namespace iTunesRichPresence_Rewrite {
             PlayingBottomLineFormatTextBox.Text = Settings.Default.PlayingBottomLine;
             PausedTopLineFormatTextBox.Text = Settings.Default.PausedTopLine;
             PausedBottomLineFormatTextBox.Text = Settings.Default.PausedBottomLine;
+            PlaybackDurationCheckBox.IsChecked = Settings.Default.DisplayPlaybackDuration;
         }
 
         private void MetroWindow_StateChanged(object sender, EventArgs e) {
@@ -114,6 +114,11 @@ namespace iTunesRichPresence_Rewrite {
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e) {
             _lastFocusedTextBox = e.Source as TextBox;
+        }
+
+        private void PlaybackDurationCheckBox_Click(object sender, RoutedEventArgs e) {
+            Settings.Default.DisplayPlaybackDuration = PlaybackDurationCheckBox.IsChecked ?? true;
+            Settings.Default.Save();
         }
     }
 }
