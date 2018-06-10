@@ -3,8 +3,9 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
 using iTunesLib;
+using iTunesRichPresence_Rewrite.Properties;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
-using Application = System.Windows.Application;
 
 namespace iTunesRichPresence_Rewrite {
     /// <summary>
@@ -21,10 +22,10 @@ namespace iTunesRichPresence_Rewrite {
             _notifyIcon = new NotifyIcon {Text = "iTunesRichPresence", Visible = false, Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location)};
             _notifyIcon.MouseDoubleClick += (sender, args) => { WindowState = WindowState.Normal; };
 
-            RunOnStartupCheckbox.IsChecked = Properties.Settings.Default.RunOnStartup;
+            RunOnStartupCheckbox.IsChecked = Settings.Default.RunOnStartup;
         }
 
-        private void MetroWindow_StateChanged(object sender, System.EventArgs e) {
+        private void MetroWindow_StateChanged(object sender, EventArgs e) {
             if (WindowState == WindowState.Minimized) {
                 ShowInTaskbar = false;
                 _notifyIcon.Visible = true;
@@ -42,18 +43,22 @@ namespace iTunesRichPresence_Rewrite {
 
         private void RunOnStartupCheckbox_OnClick(object sender, RoutedEventArgs e) {
             if (RunOnStartupCheckbox.IsChecked ?? false) {
-                Properties.Settings.Default.RunOnStartup = true;
-                Properties.Settings.Default.Save();
+                Settings.Default.RunOnStartup = true;
+                Settings.Default.Save();
 
                 Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true)?.SetValue("iTunesRichPresence", Assembly.GetExecutingAssembly().Location);
 
             }
             else {
-                Properties.Settings.Default.RunOnStartup = false;
-                Properties.Settings.Default.Save();
+                Settings.Default.RunOnStartup = false;
+                Settings.Default.Save();
 
                 Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true)?.DeleteValue("iTunesRichPresence");
             }
+        }
+
+        private async void AboutButton_OnClick(object sender, RoutedEventArgs e) {
+            await this.ShowMessageAsync("",$"iTunesRichPresence v{Assembly.GetExecutingAssembly().GetName().Version}\n\nDeveloped by nint8835 (Riley Flynn)\n\niTunesRichPresence uses portions of DiscordRpc by Discord, Inc. licensed under the MIT license. A copy of this license can be found in the program directory.");
         }
     }
 }
