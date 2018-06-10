@@ -6,7 +6,9 @@
         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="iTunesRichPresence" Height="500" Width="350" ResizeMode="CanMinimize" ShowTitleBar="True" StateChanged="MetroWindow_StateChanged">
-    <Grid/>
+    <Grid>
+        <CheckBox x:Name="RunOnStartupCheckbox" Content="Run on startup" HorizontalAlignment="Left" Margin="10,443,0,0" VerticalAlignment="Top" Click="RunOnStartupCheckbox_OnClick"/>
+    </Grid>
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
             <Button Name="DiagnosticsButton" Content="diagnostics" Click="DiagnosticsButton_OnClick"/>
