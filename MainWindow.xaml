@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="iTunesRichPresence" Height="500" Width="350" ResizeMode="NoResize" ShowTitleBar="True" ShowMinButton="True">
+        Title="iTunesRichPresence" Height="500" Width="350" ResizeMode="CanMinimize" ShowTitleBar="True" StateChanged="MetroWindow_StateChanged">
     <Grid/>
 </controls:MetroWindow>
 
