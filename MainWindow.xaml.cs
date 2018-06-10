@@ -69,7 +69,7 @@ namespace iTunesRichPresence_Rewrite {
         }
 
         private async void AboutButton_OnClick(object sender, RoutedEventArgs e) {
-            await this.ShowMessageAsync("",$"iTunesRichPresence v{Assembly.GetExecutingAssembly().GetName().Version}\n\nDeveloped by nint8835 (Riley Flynn)\n\niTunesRichPresence uses portions of DiscordRpc by Discord, Inc. licensed under the MIT license. A copy of this license can be found in the program directory.");
+            await this.ShowMessageAsync("",$"iTunesRichPresence v{Assembly.GetExecutingAssembly().GetName().Version}\n\nDeveloped by nint8835 (Riley Flynn)\n\niTunesRichPresence includes portions of a number of open source projects. The licenses of these projects can be found in this program's installation directory.");
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
