@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Text;
 using System.Windows.Threading;
 using iTunesLib;
+using iTunesRichPresence_Rewrite.Properties;
 
 namespace iTunesRichPresence_Rewrite {
     /// <summary>
@@ -60,6 +62,22 @@ namespace iTunesRichPresence_Rewrite {
         }
 
         /// <summary>
+        /// Truncates a string to fit into Discord's 127 byte size limit
+        /// </summary>
+        /// <param name="s">String to truncate</param>
+        /// <returns>Truncated string</returns>
+        private static string TruncateString(string s) {
+            var n = Encoding.Unicode.GetByteCount(s);
+            if (n <= 127) return s;
+            s = s.Substring(0, 64);
+
+            while (Encoding.Unicode.GetByteCount(s) > 123)
+                s = s.Substring(0, s.Length - 1);
+
+            return s + "...";
+        }
+
+        /// <summary>
         /// Handles checking for playing status changes and pushing out presence updates
         /// </summary>
         /// <param name="sender">Sender of this event</param>
@@ -80,6 +98,22 @@ namespace iTunesRichPresence_Rewrite {
             _currentPlaylist = _iTunes.CurrentPlaylist.Name;
             _currentPlaylistType = _iTunes.CurrentPlaylist.Kind;
             _currentPosition = _iTunes.PlayerPosition;
+
+            var presence = new DiscordRpc.RichPresence{largeImageKey = "itunes_logo_big"};
+            if (_currentState != ITPlayerState.ITPlayerStatePlaying) {
+                presence.details = TruncateString(RenderString(Settings.Default.PausedTopLine));
+                presence.state = TruncateString(RenderString(Settings.Default.PausedBottomLine));
+            }
+            else {
+                presence.details = TruncateString(RenderString(Settings.Default.PlayingTopLine));
+                presence.state = TruncateString(RenderString(Settings.Default.PlayingBottomLine));
+                if (Settings.Default.DisplayPlaybackDuration) {
+                    presence.startTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() - _currentPosition;
+                    presence.endTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() +
+                                            (_iTunes.CurrentTrack.Duration - _currentPosition);
+                }
+            }
+            DiscordRpc.UpdatePresence(presence);
         }
 
         /// <summary>
