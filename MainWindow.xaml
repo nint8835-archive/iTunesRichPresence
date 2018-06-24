@@ -24,6 +24,7 @@
                 <Button x:Name="ArtistButton" Content="Artist" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="392" Click="ArtistButton_Click" FontWeight="Normal" Grid.ColumnSpan="2"/>
                 <Button x:Name="PlaylistTypeButton" Content="Playlist type" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="392" Click="PlaylistTypeButton_Click" FontWeight="Normal" Grid.ColumnSpan="2"/>
                 <Button x:Name="PlaylistNameButton" Content="Playlist name" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="392" Click="PlaylistNameButton_Click" FontWeight="Normal" Grid.ColumnSpan="2"/>
+                <Button x:Name="AlbumButton" Content="Album" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Width="392" Click="AlbumButton_OnClick" FontWeight="Normal" Grid.ColumnSpan="2"/>
             </Grid>
         </GroupBox>
         <CheckBox x:Name="PlaybackDurationCheckBox" Content="Display playback duration" HorizontalAlignment="Left" Margin="117,443,0,0" VerticalAlignment="Top" Click="PlaybackDurationCheckBox_Click"/>

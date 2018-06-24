@@ -58,8 +58,7 @@ namespace iTunesRichPresence_Rewrite {
                 playlistType = "Album";
             }
 
-            return template.Replace("%artist", _currentArtist).Replace("%track", _currentTitle)
-                .Replace("%playlist_name", _currentPlaylist).Replace("%playlist_type", playlistType);
+            return template.Replace("%artist", _currentArtist).Replace("%track", _currentTitle).Replace("%playlist_name", _currentPlaylist).Replace("%playlist_type", playlistType).Replace("%album", _iTunes.CurrentTrack.Album);
         }
 
         /// <summary>

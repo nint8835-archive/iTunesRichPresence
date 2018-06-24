@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Navigation;
 using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
@@ -19,8 +18,8 @@ namespace iTunesRichPresence_Rewrite {
         private readonly NotifyIcon _notifyIcon;
         private readonly DiscordBridge _bridge;
 
-        private GitHubClient _gitHubClient;
-        private Release _latestRelease;
+        private readonly GitHubClient _gitHubClient;
+        private readonly Release _latestRelease;
 
         private TextBox _lastFocusedTextBox;
 
@@ -101,6 +100,10 @@ namespace iTunesRichPresence_Rewrite {
             _lastFocusedTextBox.Text += "%playlist_name";
         }
 
+        private void AlbumButton_OnClick(object sender, RoutedEventArgs e) {
+            _lastFocusedTextBox.Text += "%album";
+        }
+
         private void PlayingTopLineFormatTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
             Settings.Default.PlayingTopLine = PlayingTopLineFormatTextBox.Text;
             Settings.Default.Save();
@@ -136,5 +139,6 @@ namespace iTunesRichPresence_Rewrite {
                 Process.Start(_latestRelease.HtmlUrl);
             }
         }
+
     }
 }
