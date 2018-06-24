@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="iTunesRichPresence" Height="500" Width="450" ResizeMode="CanMinimize" ShowTitleBar="True" StateChanged="MetroWindow_StateChanged" Closing="MetroWindow_Closing">
+        Title="iTunesRichPresence" Height="500" Width="450" ResizeMode="CanMinimize" ShowTitleBar="True" StateChanged="MetroWindow_StateChanged" Closing="MetroWindow_Closing" RightWindowCommandsOverlayBehavior="HiddenTitleBar">
     <Grid>
-        <CheckBox x:Name="RunOnStartupCheckBox" Content="Run on startup" HorizontalAlignment="Left" Margin="10,443,0,0" VerticalAlignment="Top" Click="RunOnStartupCheckBox_OnClick"/>
         <Label Content="Playing status" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="PlayingTopLineFormatTextBox" HorizontalAlignment="Left" Height="23" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="424" TextChanged="PlayingTopLineFormatTextBox_TextChanged" GotFocus="TextBox_GotFocus"/>
         <TextBox x:Name="PlayingBottomLineFormatTextBox" HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="424" TextChanged="PlayingBottomLineFormatTextBox_TextChanged" GotFocus="TextBox_GotFocus"/>
@@ -33,21 +32,44 @@
                         <Setter Property="Margin" Value="5,5,5,5" />
                     </Style>
                 </Grid.Resources>
-                <Button x:Name="TrackButton" Content="Track" Click="TrackButton_Click" FontWeight="Normal" Grid.Column="0" Grid.Row="0"/>
-                <Button x:Name="ArtistButton" Content="Artist" Click="ArtistButton_Click" FontWeight="Normal" Grid.Column="1" Grid.Row="0"/>
-                <Button x:Name="PlaylistTypeButton" Content="Playlist type" Click="PlaylistTypeButton_Click" FontWeight="Normal" Grid.Column="0" Grid.Row="1"/>
-                <Button x:Name="PlaylistNameButton" Content="Playlist name" Click="PlaylistNameButton_Click" FontWeight="Normal" Grid.Column="1" Grid.Row="1"/>
-                <Button x:Name="AlbumButton" Content="Album" Click="AlbumButton_OnClick" FontWeight="Normal" Grid.Column="0" Grid.Row="2"/>
+                <Button x:Name="TrackButton" Content="Track" Click="TrackButton_Click" Grid.Column="0" Grid.Row="0"/>
+                <Button x:Name="ArtistButton" Content="Artist" Click="ArtistButton_Click" Grid.Column="1" Grid.Row="0"/>
+                <Button x:Name="PlaylistTypeButton" Content="Playlist type" Click="PlaylistTypeButton_Click" Grid.Column="0" Grid.Row="1"/>
+                <Button x:Name="PlaylistNameButton" Content="Playlist name" Click="PlaylistNameButton_Click" Grid.Column="1" Grid.Row="1"/>
+                <Button x:Name="AlbumButton" Content="Album" Click="AlbumButton_OnClick" Grid.Column="0" Grid.Row="2"/>
             </Grid>
         </GroupBox>
-        <CheckBox x:Name="PlaybackDurationCheckBox" Content="Display playback duration" HorizontalAlignment="Left" Margin="117,443,0,0" VerticalAlignment="Top" Click="PlaybackDurationCheckBox_Click"/>
+        <CheckBox x:Name="PlaybackDurationCheckBox" Content="Display playback duration" HorizontalAlignment="Left" Margin="12,443,0,0" VerticalAlignment="Top" Click="PlaybackDurationCheckBox_Click"/>
     </Grid>
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
             <Button Name="UpdateButton" Content="new version available!" Click="UpdateButton_OnClick" Visibility="Hidden"/>
+            <Button Name="SettingsButton" Content="settings" Click="SettingsButton_OnClick"/>
             <Button Name="AboutButton" Content="about" Click="AboutButton_OnClick"/>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <controls:Flyout Name="SettingsFlyout" Header="Settings" Position="Right" Width="450" Theme="Light">
+                <Grid Margin="20,20,20,20" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="RunOnStartupCheckBox" Content="Run on startup" HorizontalAlignment="Left" Click="RunOnStartupCheckBox_OnClick" Grid.Row="0" Margin="0,0,0,15"/>
+                    <Grid Grid.Row="1" Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Accent colour:" Grid.Column="0"/>
+                        <ComboBox Name="ThemeComboBox" SelectionChanged="ThemeComboBox_OnSelectionChanged" Grid.Column="1"/>
+                    </Grid>
+                        
+                </Grid>
+            </controls:Flyout>
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
 
 </controls:MetroWindow>
 

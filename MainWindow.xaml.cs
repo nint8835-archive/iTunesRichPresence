@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using iTunesRichPresence_Rewrite.Properties;
+using MahApps.Metro;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using TextBox = System.Windows.Controls.TextBox;
 using Octokit;
+using Application = System.Windows.Application;
 
 namespace iTunesRichPresence_Rewrite {
     /// <summary>
@@ -32,6 +36,13 @@ namespace iTunesRichPresence_Rewrite {
 
             _notifyIcon = new NotifyIcon {Text = "iTunesRichPresence", Visible = false, Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location)};
             _notifyIcon.MouseDoubleClick += (sender, args) => { WindowState = WindowState.Normal; };
+
+            ThemeComboBox.ItemsSource = ThemeManager.Accents.Select(accent => accent.Name);
+            ThemeComboBox.SelectedItem = Settings.Default.Accent;
+
+            ThemeManager.ChangeAppStyle(Application.Current,
+                                        ThemeManager.GetAccent(Settings.Default.Accent),
+                                        ThemeManager.GetAppTheme("BaseLight"));
 
             RunOnStartupCheckBox.IsChecked = Settings.Default.RunOnStartup;
             PlayingTopLineFormatTextBox.Text = Settings.Default.PlayingTopLine;
@@ -140,5 +151,16 @@ namespace iTunesRichPresence_Rewrite {
             }
         }
 
+        private void SettingsButton_OnClick(object sender, RoutedEventArgs e) {
+            SettingsFlyout.IsOpen = true;
+        }
+
+        private void ThemeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            Settings.Default.Accent = (string) ThemeComboBox.SelectedItem;
+            Settings.Default.Save();
+            ThemeManager.ChangeAppStyle(Application.Current,
+                                        ThemeManager.GetAccent(Settings.Default.Accent),
+                                        ThemeManager.GetAppTheme("BaseLight"));
+        }
     }
 }

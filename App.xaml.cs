@@ -24,10 +24,6 @@ namespace iTunesRichPresence_Rewrite {
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
-            ThemeManager.ChangeAppStyle(Current,
-                                        ThemeManager.GetAccent("Orange"),
-                                        ThemeManager.GetAppTheme("BaseLight"));
-
             base.OnStartup(e);
         }
 
