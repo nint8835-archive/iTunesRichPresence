@@ -30,7 +30,7 @@
     </Grid>
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Name="DiagnosticsButton" Content="diagnostics" Click="DiagnosticsButton_OnClick"/>
+            <Button Name="UpdateButton" Content="new version available!" Click="UpdateButton_OnClick" Visibility="Hidden"/>
             <Button Name="AboutButton" Content="about" Click="AboutButton_OnClick"/>
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>

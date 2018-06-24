@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Navigation;
 using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using TextBox = System.Windows.Controls.TextBox;
+using Octokit;
 
 namespace iTunesRichPresence_Rewrite {
     /// <summary>
@@ -15,6 +18,9 @@ namespace iTunesRichPresence_Rewrite {
 
         private readonly NotifyIcon _notifyIcon;
         private readonly DiscordBridge _bridge;
+
+        private GitHubClient _gitHubClient;
+        private Release _latestRelease;
 
         private TextBox _lastFocusedTextBox;
 
@@ -34,6 +40,13 @@ namespace iTunesRichPresence_Rewrite {
             PausedTopLineFormatTextBox.Text = Settings.Default.PausedTopLine;
             PausedBottomLineFormatTextBox.Text = Settings.Default.PausedBottomLine;
             PlaybackDurationCheckBox.IsChecked = Settings.Default.DisplayPlaybackDuration;
+
+            _gitHubClient = new GitHubClient(new ProductHeaderValue("iTunesRichPresence"));
+            _latestRelease = _gitHubClient.Repository.Release.GetLatest("nint8835", "iTunesRichPresence").Result;
+            if (!Assembly.GetExecutingAssembly().GetName().Version.ToString().StartsWith(_latestRelease.Name.Substring(1))) {
+                UpdateButton.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void MetroWindow_StateChanged(object sender, EventArgs e) {
@@ -46,10 +59,6 @@ namespace iTunesRichPresence_Rewrite {
                 ShowInTaskbar = true;
                 _notifyIcon.Visible = false;
             }
-        }
-
-        private async void DiagnosticsButton_OnClick(object sender, RoutedEventArgs e) {
-            await this.ShowMessageAsync("Not implemented", "Diagnostic features aren't implemented yet. Sorry about that.");
         }
 
         private void RunOnStartupCheckBox_OnClick(object sender, RoutedEventArgs e) {
@@ -119,6 +128,13 @@ namespace iTunesRichPresence_Rewrite {
         private void PlaybackDurationCheckBox_Click(object sender, RoutedEventArgs e) {
             Settings.Default.DisplayPlaybackDuration = PlaybackDurationCheckBox.IsChecked ?? true;
             Settings.Default.Save();
+        }
+
+        private async void UpdateButton_OnClick(object sender, RoutedEventArgs e) {
+            var result = await this.ShowMessageAsync("New version available!", "A new version of iTunesRichPresence is available. Would you like to download it now?", MessageDialogStyle.AffirmativeAndNegative);
+            if (result == MessageDialogResult.Affirmative) {
+                Process.Start(_latestRelease.HtmlUrl);
+            }
         }
     }
 }
