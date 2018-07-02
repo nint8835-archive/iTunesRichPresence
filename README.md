@@ -1,6 +1,6 @@
 # Rich Presence for iTunes
 
-![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/O5O2FSWT)
+![[ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/O5O2FSWT)
 
 ![Example](example.png)
 
