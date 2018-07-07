@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Threading;
 using iTunesLib;
@@ -33,7 +34,7 @@ namespace iTunesRichPresence_Rewrite {
             var handlers = new DiscordRpc.EventHandlers();
             DiscordRpc.Initialize(applicationId, ref handlers, true, null);
 
-            Tokens = new List<IToken> {new AlbumToken(), new ArtistToken(), new TrackToken(), new PlaylistNameToken(), new PlaylistTypeToken()};
+            Tokens = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes()).Where(p => typeof(IToken).IsAssignableFrom(p) && p.IsClass).Select(Activator.CreateInstance).Select(i => (IToken) i).ToList();
 
             _iTunes = new iTunesApp();
 
