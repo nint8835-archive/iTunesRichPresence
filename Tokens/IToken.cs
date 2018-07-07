@@ -14,6 +14,10 @@ namespace iTunesRichPresence_Rewrite.Tokens {
         /// </summary>
         string Token { get; }
         /// <summary>
+        /// Whether or not this token should be included in the toolbox.
+        /// </summary>
+        bool ShowInToolbox { get; }
+        /// <summary>
         /// Gets the text that this token should be replaced with.
         /// </summary>
         /// <param name="iTunes">The iTunes instance to retrieve information from</param>

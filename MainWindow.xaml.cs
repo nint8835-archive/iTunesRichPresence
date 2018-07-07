@@ -65,6 +65,7 @@ namespace iTunesRichPresence_Rewrite {
         private void PopulateToolbox() {
             var currentToken = 0;
             foreach (var token in _bridge.Tokens) {
+                if (!token.ShowInToolbox) continue;
                 var button = new Button {Content = token.DisplayName};
                 button.Click += (sender, args) => {
                     if (_lastFocusedTextBox.SelectionLength != 0) {
