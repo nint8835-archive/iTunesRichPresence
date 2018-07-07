@@ -14,7 +14,7 @@
         <TextBox x:Name="PausedTopLineFormatTextBox" HorizontalAlignment="Left" Height="23" Margin="10,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="424" TextChanged="PausedTopLineFormatTextBox_TextChanged" GotFocus="TextBox_GotFocus"/>
         <TextBox x:Name="PausedBottomLineFormatTextBox" HorizontalAlignment="Left" Height="23" Margin="10,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="424" TextChanged="PausedBottomLineFormatTextBox_TextChanged" GotFocus="TextBox_GotFocus"/>
         <GroupBox Header="Token toolbox" HorizontalAlignment="Left" Height="253" Margin="12,185,0,0" VerticalAlignment="Top" Width="422">
-            <Grid>
+            <Grid Name="ToolboxGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -32,11 +32,6 @@
                         <Setter Property="Margin" Value="5,5,5,5" />
                     </Style>
                 </Grid.Resources>
-                <Button x:Name="TrackButton" Content="Track" Click="TrackButton_Click" Grid.Column="0" Grid.Row="0"/>
-                <Button x:Name="ArtistButton" Content="Artist" Click="ArtistButton_Click" Grid.Column="1" Grid.Row="0"/>
-                <Button x:Name="PlaylistTypeButton" Content="Playlist type" Click="PlaylistTypeButton_Click" Grid.Column="0" Grid.Row="1"/>
-                <Button x:Name="PlaylistNameButton" Content="Playlist name" Click="PlaylistNameButton_Click" Grid.Column="1" Grid.Row="1"/>
-                <Button x:Name="AlbumButton" Content="Album" Click="AlbumButton_OnClick" Grid.Column="0" Grid.Row="2"/>
             </Grid>
         </GroupBox>
         <CheckBox x:Name="PlaybackDurationCheckBox" Content="Display playback duration" HorizontalAlignment="Left" Margin="12,443,0,0" VerticalAlignment="Top" Click="PlaybackDurationCheckBox_Click"/>

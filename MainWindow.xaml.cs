@@ -12,6 +12,7 @@ using Microsoft.Win32;
 using TextBox = System.Windows.Controls.TextBox;
 using Octokit;
 using Application = System.Windows.Application;
+using Button = System.Windows.Controls.Button;
 
 namespace iTunesRichPresence_Rewrite {
     /// <summary>
@@ -22,7 +23,6 @@ namespace iTunesRichPresence_Rewrite {
         private readonly NotifyIcon _notifyIcon;
         private readonly DiscordBridge _bridge;
 
-        private readonly GitHubClient _gitHubClient;
         private readonly Release _latestRelease;
 
         private TextBox _lastFocusedTextBox;
@@ -51,12 +51,27 @@ namespace iTunesRichPresence_Rewrite {
             PausedBottomLineFormatTextBox.Text = Settings.Default.PausedBottomLine;
             PlaybackDurationCheckBox.IsChecked = Settings.Default.DisplayPlaybackDuration;
 
-            _gitHubClient = new GitHubClient(new ProductHeaderValue("iTunesRichPresence"));
-            _latestRelease = _gitHubClient.Repository.Release.GetLatest("nint8835", "iTunesRichPresence").Result;
+            var gitHubClient = new GitHubClient(new ProductHeaderValue("iTunesRichPresence"));
+            _latestRelease = gitHubClient.Repository.Release.GetLatest("nint8835", "iTunesRichPresence").Result;
             if (!Assembly.GetExecutingAssembly().GetName().Version.ToString().StartsWith(_latestRelease.Name.Substring(1))) {
                 UpdateButton.Visibility = Visibility.Visible;
             }
 
+            PopulateToolbox();
+
+        }
+
+        private void PopulateToolbox() {
+            var current_token = 0;
+            foreach (var token in _bridge.Tokens) {
+                var button = new Button();
+                button.Content = token.DisplayName;
+                button.Click += (sender, args) => { _lastFocusedTextBox.Text += token.Token; };
+                ToolboxGrid.Children.Add(button);
+                Grid.SetRow(button, (int)Math.Floor((double)current_token/2));
+                Grid.SetColumn(button, current_token % 2);
+                current_token++;
+            }
         }
 
         private void MetroWindow_StateChanged(object sender, EventArgs e) {

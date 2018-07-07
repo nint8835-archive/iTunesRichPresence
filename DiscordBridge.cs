@@ -14,17 +14,15 @@ namespace iTunesRichPresence_Rewrite {
     /// </summary>
     internal class DiscordBridge {
 
-        public List<IToken> Tokens;
+        public readonly List<IToken> Tokens;
 
         private string _currentArtist;
         private string _currentTitle;
-        private string _currentPlaylist;
-        private ITPlaylistKind _currentPlaylistType;
         private ITPlayerState _currentState;
         private int _currentPosition;
 
         private readonly DispatcherTimer _timer;
-        private IiTunes _iTunes;
+        private readonly IiTunes _iTunes;
 
         /// <summary>
         /// Initializes the bridge and connects it to DiscordRPC
@@ -120,8 +118,6 @@ namespace iTunesRichPresence_Rewrite {
                 exception.Data.Add("CurrentArtist", _currentArtist);
                 exception.Data.Add("CurrentTitle", _currentTitle);
                 exception.Data.Add("CurrentState", _currentState.ToString());
-                exception.Data.Add("CurrentPlaylist", _currentPlaylist);
-                exception.Data.Add("CurrentPlaylistType", _currentPlaylistType.ToString());
                 exception.Data.Add("CurrentPosition", _currentPosition.ToString());
                 exception.Data.Add("Details", presence.details);
                 exception.Data.Add("State", presence.state);
