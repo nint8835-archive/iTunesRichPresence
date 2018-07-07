@@ -38,7 +38,7 @@
     </Grid>
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Name="UpdateButton" Content="new version available!" Click="UpdateButton_OnClick" Visibility="Hidden"/>
+            <Button Name="UpdateButton" Content="new version available!" Click="UpdateButton_OnClick" Visibility="Collapsed"/>
             <Button Name="SettingsButton" Content="settings" Click="SettingsButton_OnClick"/>
             <Button Name="AboutButton" Content="about" Click="AboutButton_OnClick"/>
         </controls:WindowCommands>

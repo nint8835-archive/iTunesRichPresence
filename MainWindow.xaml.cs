@@ -68,8 +68,8 @@ namespace iTunesRichPresence_Rewrite {
                 var button = new Button {Content = token.DisplayName};
                 button.Click += (sender, args) => { _lastFocusedTextBox.Text += token.Token; };
                 ToolboxGrid.Children.Add(button);
-                Grid.SetRow(button, (int)Math.Floor((double)currentToken/2));
-                Grid.SetColumn(button, currentToken % 2);
+                Grid.SetRow(button, (int)Math.Floor((double)currentToken/ToolboxGrid.ColumnDefinitions.Count));
+                Grid.SetColumn(button, currentToken % ToolboxGrid.ColumnDefinitions.Count);
                 currentToken++;
             }
         }
