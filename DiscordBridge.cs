@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Threading;
 using iTunesLib;
 using iTunesRichPresence_Rewrite.Properties;
+using iTunesRichPresence_Rewrite.Tokens;
 using SharpRaven.Data;
 
 namespace iTunesRichPresence_Rewrite {
@@ -10,6 +12,8 @@ namespace iTunesRichPresence_Rewrite {
     /// Simplifies interactions between iTunes and Discord
     /// </summary>
     internal class DiscordBridge {
+
+        public List<IToken> Tokens;
 
         private string _currentArtist;
         private string _currentTitle;
@@ -29,6 +33,8 @@ namespace iTunesRichPresence_Rewrite {
             var handlers = new DiscordRpc.EventHandlers();
             DiscordRpc.Initialize(applicationId, ref handlers, true, null);
 
+            Tokens = new List<IToken> {new AlbumToken(), new ArtistToken(), new TrackToken(), new PlaylistNameToken(), new PlaylistTypeToken()};
+
             _iTunes = new iTunesApp();
 
             _timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(15)};
@@ -37,8 +43,6 @@ namespace iTunesRichPresence_Rewrite {
 
             _currentArtist = "";
             _currentTitle = "";
-            _currentPlaylist = "";
-            _currentPlaylistType = ITPlaylistKind.ITPlaylistKindUnknown;
             _currentState = ITPlayerState.ITPlayerStateStopped;
             _currentPosition = 0;
 
@@ -50,15 +54,12 @@ namespace iTunesRichPresence_Rewrite {
         /// <param name="template">The template to render</param>
         /// <returns>The rendered string</returns>
         private string RenderString(string template) {
-            string playlistType;
-            if (_iTunes.CurrentPlaylist.Kind == ITPlaylistKind.ITPlaylistKindUser) {
-                playlistType = ((IITUserPlaylist) _iTunes.CurrentPlaylist).SpecialKind == ITUserPlaylistSpecialKind.ITUserPlaylistSpecialKindMusic ? "Album" : "Playlist";
-            }
-            else {
-                playlistType = "Album";
+
+            foreach (var token in Tokens) {
+                template = template.Replace(token.Token, token.GetText(_iTunes));
             }
 
-            return template.Replace("%artist", _currentArtist).Replace("%track", _currentTitle).Replace("%playlist_name", _currentPlaylist).Replace("%playlist_type", playlistType).Replace("%album", _iTunes.CurrentTrack.Album);
+            return template;
         }
 
         /// <summary>
@@ -89,14 +90,11 @@ namespace iTunesRichPresence_Rewrite {
             }
 
             if (_currentArtist == _iTunes.CurrentTrack.Artist && _currentTitle == _iTunes.CurrentTrack.Name &&
-                _currentState == _iTunes.PlayerState && _currentPlaylist == _iTunes.CurrentPlaylist.Name &&
-                _currentPlaylistType == _iTunes.CurrentPlaylist.Kind && _currentPosition == _iTunes.PlayerPosition) return;
+                _currentState == _iTunes.PlayerState && _currentPosition == _iTunes.PlayerPosition) return;
 
             _currentArtist = _iTunes.CurrentTrack.Artist;
             _currentTitle = _iTunes.CurrentTrack.Name;
             _currentState = _iTunes.PlayerState;
-            _currentPlaylist = _iTunes.CurrentPlaylist.Name;
-            _currentPlaylistType = _iTunes.CurrentPlaylist.Kind;
             _currentPosition = _iTunes.PlayerPosition;
 
             var presence = new DiscordRpc.RichPresence{largeImageKey = "itunes_logo_big"};
