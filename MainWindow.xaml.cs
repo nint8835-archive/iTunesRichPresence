@@ -66,7 +66,15 @@ namespace iTunesRichPresence_Rewrite {
             var currentToken = 0;
             foreach (var token in _bridge.Tokens) {
                 var button = new Button {Content = token.DisplayName};
-                button.Click += (sender, args) => { _lastFocusedTextBox.Text += token.Token; };
+                button.Click += (sender, args) => {
+                    if (_lastFocusedTextBox.SelectionLength != 0) {
+                        _lastFocusedTextBox.Text = _lastFocusedTextBox.Text.Replace(_lastFocusedTextBox.SelectedText, token.Token);
+                    }
+                    else {
+                        _lastFocusedTextBox.Text += token.Token; 
+                    }
+                    
+                };
                 ToolboxGrid.Children.Add(button);
                 Grid.SetRow(button, (int)Math.Floor((double)currentToken/ToolboxGrid.ColumnDefinitions.Count));
                 Grid.SetColumn(button, currentToken % ToolboxGrid.ColumnDefinitions.Count);
