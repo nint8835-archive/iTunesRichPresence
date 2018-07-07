@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -9,10 +10,10 @@ using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
-using TextBox = System.Windows.Controls.TextBox;
 using Octokit;
 using Application = System.Windows.Application;
 using Button = System.Windows.Controls.Button;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace iTunesRichPresence_Rewrite {
     /// <summary>
@@ -62,15 +63,14 @@ namespace iTunesRichPresence_Rewrite {
         }
 
         private void PopulateToolbox() {
-            var current_token = 0;
+            var currentToken = 0;
             foreach (var token in _bridge.Tokens) {
-                var button = new Button();
-                button.Content = token.DisplayName;
+                var button = new Button {Content = token.DisplayName};
                 button.Click += (sender, args) => { _lastFocusedTextBox.Text += token.Token; };
                 ToolboxGrid.Children.Add(button);
-                Grid.SetRow(button, (int)Math.Floor((double)current_token/2));
-                Grid.SetColumn(button, current_token % 2);
-                current_token++;
+                Grid.SetRow(button, (int)Math.Floor((double)currentToken/2));
+                Grid.SetColumn(button, currentToken % 2);
+                currentToken++;
             }
         }
 
@@ -106,46 +106,26 @@ namespace iTunesRichPresence_Rewrite {
             await this.ShowMessageAsync("",$"iTunesRichPresence v{Assembly.GetExecutingAssembly().GetName().Version}\n\nDeveloped by nint8835 (Riley Flynn)\n\niTunesRichPresence includes portions of a number of open source projects. The licenses of these projects can be found in this program's installation directory.");
         }
 
-        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
+        private void MetroWindow_Closing(object sender, CancelEventArgs e) {
             _bridge.Shutdown();
         }
 
-        private void TrackButton_Click(object sender, RoutedEventArgs e) {
-            _lastFocusedTextBox.Text += "%track";
-        }
-
-        private void ArtistButton_Click(object sender, RoutedEventArgs e) {
-            _lastFocusedTextBox.Text += "%artist";
-        }
-
-        private void PlaylistTypeButton_Click(object sender, RoutedEventArgs e) {
-            _lastFocusedTextBox.Text += "%playlist_type";
-        }
-
-        private void PlaylistNameButton_Click(object sender, RoutedEventArgs e) {
-            _lastFocusedTextBox.Text += "%playlist_name";
-        }
-
-        private void AlbumButton_OnClick(object sender, RoutedEventArgs e) {
-            _lastFocusedTextBox.Text += "%album";
-        }
-
-        private void PlayingTopLineFormatTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+        private void PlayingTopLineFormatTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             Settings.Default.PlayingTopLine = PlayingTopLineFormatTextBox.Text;
             Settings.Default.Save();
         }
 
-        private void PlayingBottomLineFormatTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+        private void PlayingBottomLineFormatTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             Settings.Default.PlayingBottomLine = PlayingBottomLineFormatTextBox.Text;
             Settings.Default.Save();
         }
 
-        private void PausedTopLineFormatTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+        private void PausedTopLineFormatTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             Settings.Default.PausedTopLine = PausedTopLineFormatTextBox.Text;
             Settings.Default.Save();
         }
 
-        private void PausedBottomLineFormatTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) {
+        private void PausedBottomLineFormatTextBox_TextChanged(object sender, TextChangedEventArgs e) {
             Settings.Default.PausedBottomLine = PausedBottomLineFormatTextBox.Text;
             Settings.Default.Save();
         }
