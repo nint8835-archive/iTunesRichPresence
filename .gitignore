@@ -1,6 +1,4 @@
 ﻿.vs/
 bin/
 obj/
-*.csproj
-*.sln
 packages/
