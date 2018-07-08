@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Threading;
-using MahApps.Metro;
 using SharpRaven;
 using SharpRaven.Data;
 
@@ -10,6 +11,11 @@ namespace iTunesRichPresence_Rewrite {
 
     public static class Globals {
         public static RavenClient RavenClient;
+        public static TextBox LogBox;
+
+        public static void Log(string message) {
+            LogBox.Text += $"{DateTime.Now.ToString(CultureInfo.CurrentCulture)}: {message}\n";
+        }
     }
 
     /// <summary>
