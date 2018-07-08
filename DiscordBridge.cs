@@ -144,6 +144,7 @@ namespace iTunesRichPresence_Rewrite {
                 exception.Data.Add("Details", presence.details);
                 exception.Data.Add("State", presence.state);
                 Globals.RavenClient.Capture(new SentryEvent(exception));
+                Globals.Log($"An unhandled exception has occurred and been reported to Sentry: {exception.Message}");
             }
             
         }

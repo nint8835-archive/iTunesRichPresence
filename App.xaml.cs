@@ -14,7 +14,7 @@ namespace iTunesRichPresence_Rewrite {
         public static TextBox LogBox;
 
         public static void Log(string message) {
-            LogBox.Text += $"{DateTime.Now.ToString(CultureInfo.CurrentCulture)}: {message}\n";
+            LogBox.Text += $"[{DateTime.Now.ToString(CultureInfo.CurrentCulture)}] {message}\n";
         }
     }
 
@@ -35,10 +35,12 @@ namespace iTunesRichPresence_Rewrite {
 
         private void CurrentOnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
             Globals.RavenClient.Capture(new SentryEvent(e.Exception));
+            Globals.Log($"An unhandled exception has occurred and been reported to Sentry: {e.Exception.Message}");
         }
 
         private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs e) {
             Globals.RavenClient.Capture(new SentryEvent(e.ExceptionObject as Exception));
+            Globals.Log($"An unhandled exception has occurred and been reported to Sentry: {((Exception)e.ExceptionObject).Message}");
         }
     }
 }
