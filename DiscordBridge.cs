@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Threading;
 using iTunesLib;
@@ -22,7 +23,7 @@ namespace iTunesRichPresence_Rewrite {
         private int _currentPosition;
 
         private readonly DispatcherTimer _timer;
-        private readonly IiTunes _iTunes;
+        private IiTunes _iTunes;
 
         /// <summary>
         /// Initializes the bridge and connects it to DiscordRPC
@@ -55,7 +56,12 @@ namespace iTunesRichPresence_Rewrite {
         private string RenderString(string template) {
 
             foreach (var token in Tokens) {
-                template = template.Replace(token.Token, token.GetText(_iTunes));
+                try {
+                    template = template.Replace(token.Token, token.GetText(_iTunes));
+                }
+                catch (COMException) {
+                    template = template.Replace(token.Token, "ERROR");
+                }
             }
 
             return template;
@@ -83,10 +89,26 @@ namespace iTunesRichPresence_Rewrite {
         /// <param name="sender">Sender of this event</param>
         /// <param name="e">Args of this event</param>
         private void Timer_OnTick(object sender, EventArgs e) {
-            if (_iTunes.CurrentTrack == null) {
-                DiscordRpc.ClearPresence();
+            try {
+                if (_iTunes == null) {
+                    _iTunes = new iTunesApp();
+                }
+                if (_iTunes.CurrentTrack == null) {
+                    DiscordRpc.ClearPresence();
+                    return;
+                }
+            }
+            catch (COMException) {
+                _iTunes = null;
+                var newPresence = new DiscordRpc.RichPresence {
+                    largeImageKey = "itunes_logo_big",
+                    details = "Error connecting to iTunes",
+                    state = "Playback information unavailable"
+                };
+                DiscordRpc.UpdatePresence(newPresence);
                 return;
             }
+            
 
             if (_currentArtist == _iTunes.CurrentTrack.Artist && _currentTitle == _iTunes.CurrentTrack.Name &&
                 _currentState == _iTunes.PlayerState && _currentPosition == _iTunes.PlayerPosition) return;
