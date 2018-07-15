@@ -77,7 +77,7 @@ namespace iTunesRichPresence_Rewrite {
             if (n <= 127) return s;
             s = s.Substring(0, 64);
 
-            while (Encoding.Unicode.GetByteCount(s) > 123)
+            while (Encoding.Unicode.GetByteCount(s + "...") > 127)
                 s = s.Substring(0, s.Length - 1);
 
             return s + "...";
