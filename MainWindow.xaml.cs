@@ -26,16 +26,12 @@ namespace iTunesRichPresence_Rewrite {
 
         private readonly Release _latestRelease;
 
-        private int _currentStage;
-
         private TextBox _lastFocusedTextBox;
 
         public MainWindow() {
             InitializeComponent();
 
             Globals.LogBox = LogBox;
-
-            _currentStage = 0;
 
             _lastFocusedTextBox = PlayingTopLineFormatTextBox;
 
@@ -57,6 +53,9 @@ namespace iTunesRichPresence_Rewrite {
             PausedTopLineFormatTextBox.Text = Settings.Default.PausedTopLine;
             PausedBottomLineFormatTextBox.Text = Settings.Default.PausedBottomLine;
             PlaybackDurationCheckBox.IsChecked = Settings.Default.DisplayPlaybackDuration;
+            ExperimentsCheckBox.IsChecked = Settings.Default.ExperimentsEnabled;
+            ExperimentsButton.Visibility =
+                Settings.Default.ExperimentsEnabled ? Visibility.Visible : Visibility.Collapsed;
 
             var gitHubClient = new GitHubClient(new ProductHeaderValue("iTunesRichPresence"));
             _latestRelease = gitHubClient.Repository.Release.GetLatest("nint8835", "iTunesRichPresence").Result;
@@ -118,12 +117,6 @@ namespace iTunesRichPresence_Rewrite {
         }
 
         private async void AboutButton_OnClick(object sender, RoutedEventArgs e) {
-            if (_currentStage == 1) {
-                _currentStage++;
-            }
-            else {
-                _currentStage = 0;
-            }
             await this.ShowMessageAsync("",$"iTunesRichPresence v{Assembly.GetExecutingAssembly().GetName().Version}\n\nDeveloped by nint8835 (Riley Flynn)\n\niTunesRichPresence includes portions of a number of open source projects. The licenses of these projects can be found in this program's installation directory.");
         }
 
@@ -168,12 +161,6 @@ namespace iTunesRichPresence_Rewrite {
         }
 
         private void SettingsButton_OnClick(object sender, RoutedEventArgs e) {
-            if (_currentStage == 0) {
-                _currentStage++;
-            }
-            else if (_currentStage == 1){
-                _currentStage = 0;
-            }
             SettingsFlyout.IsOpen = true;
         }
 
@@ -184,9 +171,17 @@ namespace iTunesRichPresence_Rewrite {
                                         ThemeManager.GetAccent(Settings.Default.Accent),
                                         ThemeManager.GetAppTheme("BaseLight"));
 
-            if ((string) ThemeComboBox.SelectedItem != "Crimson" || _currentStage != 2) return;
-            LogBox.Visibility = Visibility.Visible;
-            Globals.Log("Log shown.");
+        }
+
+        private void ExperimentsCheckBox_OnClick(object sender, RoutedEventArgs e) {
+            Settings.Default.ExperimentsEnabled = ExperimentsCheckBox.IsChecked ?? false;
+            Settings.Default.Save();
+            ExperimentsButton.Visibility =
+                Settings.Default.ExperimentsEnabled ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void ExperimentsButton_OnClick(object sender, RoutedEventArgs e) {
+            ExperimentsFlyout.IsOpen = true;
         }
     }
 }

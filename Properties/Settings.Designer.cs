@@ -106,5 +106,17 @@ namespace iTunesRichPresence_Rewrite.Properties {
                 this["Accent"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ExperimentsEnabled {
+            get {
+                return ((bool)(this["ExperimentsEnabled"]));
+            }
+            set {
+                this["ExperimentsEnabled"] = value;
+            }
+        }
     }
 }

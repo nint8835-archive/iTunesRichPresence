@@ -38,6 +38,7 @@
     </Grid>
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
+            <Button Name="ExperimentsButton" Content="experiments" Click="ExperimentsButton_OnClick" Visibility="Collapsed"/>
             <Button Name="UpdateButton" Content="new version available!" Click="UpdateButton_OnClick" Visibility="Collapsed"/>
             <Button Name="SettingsButton" Content="settings" Click="SettingsButton_OnClick"/>
             <Button Name="AboutButton" Content="about" Click="AboutButton_OnClick"/>
@@ -46,11 +47,11 @@
     <controls:MetroWindow.Flyouts>
         <controls:FlyoutsControl>
             <controls:Flyout Name="SettingsFlyout" Header="Settings" Position="Right" Width="450" Theme="Light">
-                <Grid Margin="20,20,20,20">
+                <Grid Margin="20,20,20,20" VerticalAlignment="Top">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="7*"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <CheckBox x:Name="RunOnStartupCheckBox" Content="Run on startup" HorizontalAlignment="Left" Click="RunOnStartupCheckBox_OnClick" Grid.Row="0" Margin="0,0,0,15"/>
                     <Grid Grid.Row="1" Margin="0,0,0,15">
@@ -61,8 +62,17 @@
                         <Label Content="Accent colour:" Grid.Column="0"/>
                         <ComboBox Name="ThemeComboBox" SelectionChanged="ThemeComboBox_OnSelectionChanged" Grid.Column="1"/>
                     </Grid>
-                    <TextBox Grid.Row="2" Name="LogBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True" Visibility="Collapsed"/>
-                        
+                    <CheckBox x:Name="ExperimentsCheckBox" Content="Enable experiments" HorizontalAlignment="Left" Click="ExperimentsCheckBox_OnClick" Grid.Row="2" Margin="0,0,0,15"/>
+
+                </Grid>
+            </controls:Flyout>
+            <controls:Flyout Name="ExperimentsFlyout" Header="Experiments" Position="Right" Width="450" Theme="Light">
+                <Grid Margin="20,20,20,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Row="0" Name="LogBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True"/>
+
                 </Grid>
             </controls:Flyout>
         </controls:FlyoutsControl>
