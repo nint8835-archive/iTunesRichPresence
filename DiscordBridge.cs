@@ -23,7 +23,7 @@ namespace iTunesRichPresence_Rewrite {
         private int _currentPosition;
 
         private readonly DispatcherTimer _timer;
-        private IiTunes _iTunes;
+        public IiTunes ITunes;
 
         /// <summary>
         /// Initializes the bridge and connects it to DiscordRPC
@@ -35,7 +35,7 @@ namespace iTunesRichPresence_Rewrite {
 
             Tokens = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes()).Where(p => typeof(IToken).IsAssignableFrom(p) && p.IsClass).Select(Activator.CreateInstance).Select(i => (IToken) i).ToList();
 
-            _iTunes = new iTunesApp();
+            ITunes = new iTunesApp();
 
             _timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(15)};
             _timer.Tick += Timer_OnTick;
@@ -57,7 +57,7 @@ namespace iTunesRichPresence_Rewrite {
 
             foreach (var token in Tokens) {
                 try {
-                    template = template.Replace(token.Token, token.GetText(_iTunes));
+                    template = template.Replace(token.Token, token.GetText(ITunes));
                 }
                 catch (COMException) {
                     template = template.Replace(token.Token, "ERROR");
@@ -90,16 +90,17 @@ namespace iTunesRichPresence_Rewrite {
         /// <param name="e">Args of this event</param>
         private void Timer_OnTick(object sender, EventArgs e) {
             try {
-                if (_iTunes == null) {
-                    _iTunes = new iTunesApp();
+                if (ITunes == null) {
+                    ITunes = new iTunesApp();
                 }
-                if (_iTunes.CurrentTrack == null) {
+
+                if (ITunes.CurrentTrack == null) {
                     DiscordRpc.ClearPresence();
                     return;
                 }
             }
             catch (COMException) {
-                _iTunes = null;
+                ITunes = null;
                 var newPresence = new DiscordRpc.RichPresence {
                     largeImageKey = "itunes_logo_big",
                     details = "Error connecting to iTunes",
@@ -108,15 +109,22 @@ namespace iTunesRichPresence_Rewrite {
                 DiscordRpc.UpdatePresence(newPresence);
                 return;
             }
+            catch (EntryPointNotFoundException) {
+                var newPresence = new DiscordRpc.RichPresence {
+                    largeImageKey = "itunes_logo_big",
+                    details = "No song playing",
+                    state = "Re-install iTunesRichPresence to clear this message"
+                }
+            }
             
 
-            if (_currentArtist == _iTunes.CurrentTrack.Artist && _currentTitle == _iTunes.CurrentTrack.Name &&
-                _currentState == _iTunes.PlayerState && _currentPosition == _iTunes.PlayerPosition) return;
+            if (_currentArtist == ITunes.CurrentTrack.Artist && _currentTitle == ITunes.CurrentTrack.Name &&
+                _currentState == ITunes.PlayerState && _currentPosition == ITunes.PlayerPosition) return;
 
-            _currentArtist = _iTunes.CurrentTrack.Artist;
-            _currentTitle = _iTunes.CurrentTrack.Name;
-            _currentState = _iTunes.PlayerState;
-            _currentPosition = _iTunes.PlayerPosition;
+            _currentArtist = ITunes.CurrentTrack.Artist;
+            _currentTitle = ITunes.CurrentTrack.Name;
+            _currentState = ITunes.PlayerState;
+            _currentPosition = ITunes.PlayerPosition;
 
             var presence = new DiscordRpc.RichPresence{largeImageKey = "itunes_logo_big"};
             if (_currentState != ITPlayerState.ITPlayerStatePlaying) {
@@ -129,7 +137,7 @@ namespace iTunesRichPresence_Rewrite {
                 if (Settings.Default.DisplayPlaybackDuration) {
                     presence.startTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() - _currentPosition;
                     presence.endTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() +
-                                            (_iTunes.CurrentTrack.Duration - _currentPosition);
+                                            (ITunes.CurrentTrack.Duration - _currentPosition);
                 }
             }
 

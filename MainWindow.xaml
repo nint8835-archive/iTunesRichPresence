@@ -69,9 +69,18 @@
             <controls:Flyout Name="ExperimentsFlyout" Header="Experiments" Position="Right" Width="450" Theme="Light">
                 <Grid Margin="20,20,20,20">
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <TextBox Grid.Row="0" Name="LogBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True"/>
+                    <Grid Grid.Row="1" Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="Experiment_TrackNameTextBox" Grid.Column="0"/>
+                        <Button Name="Experiment_PlayButton" Content="Play" Grid.Column="1" Click="Experiment_PlayButton_OnClick"/>
+                    </Grid>
 
                 </Grid>
             </controls:Flyout>

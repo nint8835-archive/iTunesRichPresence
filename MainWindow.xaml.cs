@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using iTunesLib;
 using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro;
 using MahApps.Metro.Controls.Dialogs;
@@ -178,10 +179,18 @@ namespace iTunesRichPresence_Rewrite {
             Settings.Default.Save();
             ExperimentsButton.Visibility =
                 Settings.Default.ExperimentsEnabled ? Visibility.Visible : Visibility.Collapsed;
+            var state = Settings.Default.ExperimentsEnabled ? "enabled" : "disabled";
+            Globals.Log($"Experiments {state}");
         }
 
         private void ExperimentsButton_OnClick(object sender, RoutedEventArgs e) {
             ExperimentsFlyout.IsOpen = true;
+        }
+
+        private void Experiment_PlayButton_OnClick(object sender, RoutedEventArgs e) {
+            var track = _bridge.ITunes.LibraryPlaylist.Tracks.ItemByName[Experiment_TrackNameTextBox.Text];
+            Globals.Log($"Playing {track.Name} by {track.Artist}");
+            track.Play();
         }
     }
 }
