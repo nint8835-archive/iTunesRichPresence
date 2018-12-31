@@ -52,6 +52,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <CheckBox x:Name="RunOnStartupCheckBox" Content="Run on startup" HorizontalAlignment="Left" Click="RunOnStartupCheckBox_OnClick" Grid.Row="0" Margin="0,0,0,15"/>
                     <Grid Grid.Row="1" Margin="0,0,0,15">
@@ -62,7 +63,15 @@
                         <Label Content="Accent colour:" Grid.Column="0"/>
                         <ComboBox Name="ThemeComboBox" SelectionChanged="ThemeComboBox_OnSelectionChanged" Grid.Column="1"/>
                     </Grid>
-                    <CheckBox x:Name="ExperimentsCheckBox" Content="Enable experiments" HorizontalAlignment="Left" Click="ExperimentsCheckBox_OnClick" Grid.Row="2" Margin="0,0,0,15"/>
+                    <Grid Grid.Row="2" Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="App name:" Grid.Column="0"/>
+                        <ComboBox Name="AppNameComboBox" SelectionChanged="AppNameComboBox_OnSelectionChanged" Grid.Column="1"/>
+                    </Grid>
+                    <CheckBox x:Name="ExperimentsCheckBox" Content="Enable experiments" HorizontalAlignment="Left" Click="ExperimentsCheckBox_OnClick" Grid.Row="3" Margin="0,0,0,15"/>
 
                 </Grid>
             </controls:Flyout>

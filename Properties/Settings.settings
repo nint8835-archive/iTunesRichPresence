@@ -26,5 +26,8 @@
     <Setting Name="ExperimentsEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="AppName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">iTunes</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

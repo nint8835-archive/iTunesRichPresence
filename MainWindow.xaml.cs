@@ -23,7 +23,7 @@ namespace iTunesRichPresence_Rewrite {
     public partial class MainWindow {
 
         private readonly NotifyIcon _notifyIcon;
-        private readonly DiscordBridge _bridge;
+        private DiscordBridge _bridge;
 
         private readonly Release _latestRelease;
 
@@ -35,8 +35,6 @@ namespace iTunesRichPresence_Rewrite {
             Globals.LogBox = LogBox;
 
             _lastFocusedTextBox = PlayingTopLineFormatTextBox;
-
-            _bridge = new DiscordBridge("383816327850360843");
 
             _notifyIcon = new NotifyIcon {Text = "iTunesRichPresence", Visible = false, Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location)};
             _notifyIcon.MouseDoubleClick += (sender, args) => { WindowState = WindowState.Normal; };
@@ -58,6 +56,12 @@ namespace iTunesRichPresence_Rewrite {
             ExperimentsButton.Visibility =
                 Settings.Default.ExperimentsEnabled ? Visibility.Visible : Visibility.Collapsed;
 
+            AppNameComboBox.Items.Add("iTunes");
+            AppNameComboBox.Items.Add("Apple Music");
+            CreateBridge();
+
+            AppNameComboBox.SelectedItem = Settings.Default.AppName;
+
             var gitHubClient = new GitHubClient(new ProductHeaderValue("iTunesRichPresence"));
             _latestRelease = gitHubClient.Repository.Release.GetLatest("nint8835", "iTunesRichPresence").Result;
             if (!Assembly.GetExecutingAssembly().GetName().Version.ToString().StartsWith(_latestRelease.Name.Substring(1))) {
@@ -66,6 +70,11 @@ namespace iTunesRichPresence_Rewrite {
 
             PopulateToolbox();
 
+        }
+
+        private void CreateBridge() {
+            _bridge?.Shutdown();
+            _bridge = (string)AppNameComboBox.SelectedItem == "iTunes" ? new DiscordBridge("383816327850360843") : new DiscordBridge("529435150472183819");
         }
 
         private void PopulateToolbox() {
@@ -191,6 +200,12 @@ namespace iTunesRichPresence_Rewrite {
             var track = _bridge.ITunes.LibraryPlaylist.Tracks.ItemByName[Experiment_TrackNameTextBox.Text];
             Globals.Log($"Playing {track.Name} by {track.Artist}");
             track.Play();
+        }
+
+        private void AppNameComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+            Settings.Default.AppName = (string) AppNameComboBox.SelectedItem;
+            CreateBridge();
+            Settings.Default.Save();
         }
     }
 }
