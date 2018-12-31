@@ -15,7 +15,7 @@ namespace iTunesRichPresence_Rewrite {
     /// </summary>
     internal class DiscordBridge {
 
-        public readonly List<IToken> Tokens;
+        public readonly List<IToken> tokens;
 
         private string _currentArtist;
         private string _currentTitle;
@@ -33,7 +33,7 @@ namespace iTunesRichPresence_Rewrite {
             var handlers = new DiscordRpc.EventHandlers();
             DiscordRpc.Initialize(applicationId, ref handlers, true, null);
 
-            Tokens = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes()).Where(p => typeof(IToken).IsAssignableFrom(p) && p.IsClass).Select(Activator.CreateInstance).Select(i => (IToken) i).ToList();
+            tokens = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes()).Where(p => typeof(IToken).IsAssignableFrom(p) && p.IsClass).Select(Activator.CreateInstance).Select(i => (IToken) i).ToList();
 
             ITunes = new iTunesApp();
 
@@ -55,7 +55,7 @@ namespace iTunesRichPresence_Rewrite {
         /// <returns>The rendered string</returns>
         private string RenderString(string template) {
 
-            foreach (var token in Tokens) {
+            foreach (var token in tokens) {
                 try {
                     template = template.Replace(token.Token, token.GetText(ITunes));
                 }
@@ -114,7 +114,9 @@ namespace iTunesRichPresence_Rewrite {
                     largeImageKey = "itunes_logo_big",
                     details = "No song playing",
                     state = "Re-install iTunesRichPresence to clear this message"
-                }
+                };
+                DiscordRpc.UpdatePresence(newPresence);
+                return;
             }
             
 
