@@ -87,7 +87,7 @@ namespace iTunesRichPresence_Rewrite {
             {
                 uptime.NextValue();
                 var timeSinceStart = TimeSpan.FromSeconds(uptime.NextValue());
-                if (timeSinceStart.Minutes > 2) {
+                if (timeSinceStart.Minutes < 2) {
                     // If it's been less than 2 minutes since the system was started, we'll treat it as if the app was started on boot
                     WindowState = WindowState.Minimized;
                     ShowInTaskbar = false;
