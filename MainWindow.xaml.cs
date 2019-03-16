@@ -114,11 +114,13 @@ namespace iTunesRichPresence_Rewrite {
         private void MetroWindow_StateChanged(object sender, EventArgs e) {
             if (WindowState == WindowState.Minimized) {
                 ShowInTaskbar = false;
+                Visibility = Visibility.Hidden;
                 _notifyIcon.Visible = true;
                 _notifyIcon.ShowBalloonTip(5000, "iTunesRichPresence hidden to tray", "iTunesRichPresence has been minimized to the system tray. Double click the icon to show the window again.", ToolTipIcon.None);
             }
             else {
                 ShowInTaskbar = true;
+                Visibility = Visibility.Visible;
                 _notifyIcon.Visible = false;
             }
         }
