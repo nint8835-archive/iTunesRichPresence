@@ -130,5 +130,17 @@ namespace iTunesRichPresence_Rewrite.Properties {
                 this["AppName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ClearOnPause {
+            get {
+                return ((bool)(this["ClearOnPause"]));
+            }
+            set {
+                this["ClearOnPause"] = value;
+            }
+        }
     }
 }

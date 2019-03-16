@@ -52,6 +52,7 @@ namespace iTunesRichPresence_Rewrite {
             PausedTopLineFormatTextBox.Text = Settings.Default.PausedTopLine;
             PausedBottomLineFormatTextBox.Text = Settings.Default.PausedBottomLine;
             PlaybackDurationCheckBox.IsChecked = Settings.Default.DisplayPlaybackDuration;
+            ClearOnPauseCheckBox.IsChecked = Settings.Default.ClearOnPause;
             ExperimentsCheckBox.IsChecked = Settings.Default.ExperimentsEnabled;
             ExperimentsButton.Visibility =
                 Settings.Default.ExperimentsEnabled ? Visibility.Visible : Visibility.Collapsed;
@@ -217,6 +218,11 @@ namespace iTunesRichPresence_Rewrite {
         private void AppNameComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
             Settings.Default.AppName = (string) AppNameComboBox.SelectedItem;
             CreateBridge();
+            Settings.Default.Save();
+        }
+
+        private void ClearOnPauseCheckBox_OnClick(object sender, RoutedEventArgs e) {
+            Settings.Default.ClearOnPause = ClearOnPauseCheckBox.IsChecked ?? false;
             Settings.Default.Save();
         }
     }

@@ -94,7 +94,7 @@ namespace iTunesRichPresence_Rewrite {
                     ITunes = new iTunesApp();
                 }
 
-                if (ITunes.CurrentTrack == null) {
+                if (ITunes.CurrentTrack == null || (Settings.Default.ClearOnPause && ITunes.PlayerState != ITPlayerState.ITPlayerStatePlaying)) {
                     DiscordRpc.ClearPresence();
                     return;
                 }

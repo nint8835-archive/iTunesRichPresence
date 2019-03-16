@@ -29,5 +29,8 @@
     <Setting Name="AppName" Type="System.String" Scope="User">
       <Value Profile="(Default)">iTunes</Value>
     </Setting>
+    <Setting Name="ClearOnPause" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
