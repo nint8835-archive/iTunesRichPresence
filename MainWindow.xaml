@@ -80,7 +80,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Patreon email:" Grid.Column="0"/>
+                        <Label Name="PatreonEmailLabel" Content="Patreon email:" Grid.Column="0"/>
                         <TextBox Name="PatreonEmailTextBox" Grid.Column="1"/>
                     </Grid>
                     <CheckBox x:Name="AlbumArtCheckBox" Content="Enable album art support" HorizontalAlignment="Left" Click="ExperimentsCheckBox_OnClick" Grid.Row="5" Margin="0,0,0,15"/>

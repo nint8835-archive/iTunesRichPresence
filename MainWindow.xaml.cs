@@ -68,6 +68,18 @@ namespace iTunesRichPresence_Rewrite {
                 UpdateButton.Visibility = Visibility.Visible;
             }
 
+#if DEBUG
+            PatreonEmailLabel.Visibility = Visibility.Visible;
+            PatreonEmailTextBox.Visibility = Visibility.Visible;
+            PatreonStatusLabel.Visibility = Visibility.Visible;
+            AlbumArtCheckBox.Visibility = Visibility.Visible;
+#else
+            PatreonEmailLabel.Visibility = Visibility.Hidden;
+            PatreonEmailTextBox.Visibility = Visibility.Hidden;
+            PatreonStatusLabel.Visibility = Visibility.Hidden;
+            AlbumArtCheckBox.Visibility = Visibility.Hidden;
+#endif
+
             PopulateToolbox();
 
         }
