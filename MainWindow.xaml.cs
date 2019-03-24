@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -65,11 +66,17 @@ namespace iTunesRichPresence_Rewrite {
 
             AppNameComboBox.SelectedItem = Settings.Default.AppName;
 
-            var gitHubClient = new GitHubClient(new ProductHeaderValue("iTunesRichPresence"));
-            _latestRelease = gitHubClient.Repository.Release.GetLatest("nint8835", "iTunesRichPresence").Result;
-            if (!Assembly.GetExecutingAssembly().GetName().Version.ToString().StartsWith(_latestRelease.Name.Substring(1))) {
-                UpdateButton.Visibility = Visibility.Visible;
+            try {
+                var gitHubClient = new GitHubClient(new ProductHeaderValue("iTunesRichPresence"));
+                _latestRelease = gitHubClient.Repository.Release.GetLatest("nint8835", "iTunesRichPresence").Result;
+                if (!Assembly.GetExecutingAssembly().GetName().Version.ToString().StartsWith(_latestRelease.Name.Substring(1))) {
+                    UpdateButton.Visibility = Visibility.Visible;
+                }
             }
+            catch (WebException) {
+                // Occurs when it fails to check for updates, so we can safely ignore it
+            }
+            
 
 #if DEBUG
             PatreonEmailLabel.Visibility = Visibility.Visible;
