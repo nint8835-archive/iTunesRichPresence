@@ -37,7 +37,9 @@ namespace iTunesRichPresence_Rewrite {
             _lastFocusedTextBox = PlayingTopLineFormatTextBox;
 
             _notifyIcon = new NotifyIcon {Text = "iTunesRichPresence", Visible = false, Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location)};
-            _notifyIcon.MouseDoubleClick += (sender, args) => { WindowState = WindowState.Normal; };
+            _notifyIcon.MouseDoubleClick += (sender, args) => {
+                SetVisibility(true);
+            };
 
             ThemeComboBox.ItemsSource = ThemeManager.Accents.Select(accent => accent.Name);
             ThemeComboBox.SelectedItem = Settings.Default.Accent;
@@ -89,10 +91,7 @@ namespace iTunesRichPresence_Rewrite {
                 var timeSinceStart = TimeSpan.FromSeconds(uptime.NextValue());
                 if (timeSinceStart.Minutes < 2) {
                     // If it's been less than 2 minutes since the system was started, we'll treat it as if the app was started on boot
-                    WindowState = WindowState.Minimized;
-                    ShowInTaskbar = false;
-                    Visibility = Visibility.Hidden;
-                    _notifyIcon.Visible = true;
+                    SetVisibility(false);
                 }
             }
 
@@ -124,17 +123,20 @@ namespace iTunesRichPresence_Rewrite {
             }
         }
 
+        private void SetVisibility(bool visible) {
+            ShowInTaskbar = visible;
+            Visibility = visible ? Visibility.Visible : Visibility.Hidden;
+            _notifyIcon.Visible = !visible;
+            WindowState = visible ? WindowState.Normal : WindowState.Minimized;
+        }
+
         private void MetroWindow_StateChanged(object sender, EventArgs e) {
             if (WindowState == WindowState.Minimized) {
-                ShowInTaskbar = false;
-                Visibility = Visibility.Hidden;
-                _notifyIcon.Visible = true;
+                SetVisibility(false);
                 _notifyIcon.ShowBalloonTip(5000, "iTunesRichPresence hidden to tray", "iTunesRichPresence has been minimized to the system tray. Double click the icon to show the window again.", ToolTipIcon.None);
             }
             else {
-                ShowInTaskbar = true;
-                Visibility = Visibility.Visible;
-                _notifyIcon.Visible = false;
+                SetVisibility(true);
             }
         }
 
