@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="iTunesRichPresence" Height="500" Width="450" ResizeMode="CanMinimize" ShowTitleBar="True" StateChanged="MetroWindow_StateChanged" Closing="MetroWindow_Closing" RightWindowCommandsOverlayBehavior="HiddenTitleBar">
+        Title="iTunesRichPresence" Height="500" Width="450" ResizeMode="CanMinimize" ShowTitleBar="True" StateChanged="MetroWindow_StateChanged" Closing="MetroWindow_Closing" RightWindowCommandsOverlayBehavior="HiddenTitleBar" Loaded="MainWindow_OnLoaded">
     <Grid>
         <Label Content="Playing status" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="PlayingTopLineFormatTextBox" HorizontalAlignment="Left" Height="23" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="424" TextChanged="PlayingTopLineFormatTextBox_TextChanged" GotFocus="TextBox_GotFocus"/>

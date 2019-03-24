@@ -4,12 +4,15 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using iTunesLib;
 using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using Octokit;
@@ -62,7 +65,14 @@ namespace iTunesRichPresence_Rewrite {
 
             AppNameComboBox.Items.Add("iTunes");
             AppNameComboBox.Items.Add("Apple Music");
-            CreateBridge();
+            try {
+                CreateBridge();
+            }
+            catch (COMException) {
+                _bridge = null;
+            }
+
+
 
             AppNameComboBox.SelectedItem = Settings.Default.AppName;
 
@@ -248,6 +258,14 @@ namespace iTunesRichPresence_Rewrite {
         private void ClearOnPauseCheckBox_OnClick(object sender, RoutedEventArgs e) {
             Settings.Default.ClearOnPause = ClearOnPauseCheckBox.IsChecked ?? false;
             Settings.Default.Save();
+        }
+
+        private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e) {
+            if (_bridge == null) {
+                await this.ShowMessageAsync("Failed to create COM object",
+                    "We failed to create the COM object used to communicate with iTunes. This commonly occurs due to having the Windows Store version of iTunes installed, or running iTunes as a different user than the current user (such as running either this app or iTunes as admin). Please double-check your iTunes installation and try running this app again.", MessageDialogStyle.Affirmative, new MetroDialogSettings { AffirmativeButtonText = "Close" });
+                Environment.Exit(1);
+            }
         }
     }
 }
