@@ -87,6 +87,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Tokens\Hidden\LastPushToken.cs" />
+    <Compile Include="Tokens\PlayCountToken.cs" />
     <Compile Include="Tokens\PlaylistNameToken.cs" />
     <Compile Include="Tokens\PlaylistTypeToken.cs" />
     <Compile Include="Tokens\Hidden\PushesToken.cs" />
