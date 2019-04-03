@@ -26,3 +26,5 @@ Your discord should now display your currently playing music from iTunes
 If you would like to contact me, join [the Discord server](https://discord.gg/57a8dqb)
 
 **Note: there are no plans for a Mac version of this software.**
+
+See [iTunes-Discord-RP](https://github.com/kevinmussi/iTunes-Discord-RP) for an alternative of this software that works on MacOS.
