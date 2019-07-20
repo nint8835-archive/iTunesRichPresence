@@ -60,6 +60,7 @@ namespace iTunesRichPresence_Rewrite {
             PlaybackDurationCheckBox.IsChecked = Settings.Default.DisplayPlaybackDuration;
             ClearOnPauseCheckBox.IsChecked = Settings.Default.ClearOnPause;
             ExperimentsCheckBox.IsChecked = Settings.Default.ExperimentsEnabled;
+            MinimizeOnStartupCheckBox.IsChecked = Settings.Default.MinimizeOnStartup;
             ExperimentsButton.Visibility =
                 Settings.Default.ExperimentsEnabled ? Visibility.Visible : Visibility.Collapsed;
 
@@ -83,7 +84,7 @@ namespace iTunesRichPresence_Rewrite {
                     UpdateButton.Visibility = Visibility.Visible;
                 }
             }
-            catch (WebException) {
+            catch {
                 // Occurs when it fails to check for updates, so we can safely ignore it
             }
             
@@ -102,14 +103,8 @@ namespace iTunesRichPresence_Rewrite {
 
             PopulateToolbox();
 
-            using (var uptime = new PerformanceCounter("System", "System Up Time"))
-            {
-                uptime.NextValue();
-                var timeSinceStart = TimeSpan.FromSeconds(uptime.NextValue());
-                if (timeSinceStart.Minutes < 2) {
-                    // If it's been less than 2 minutes since the system was started, we'll treat it as if the app was started on boot
-                    SetVisibility(false);
-                }
+            if (Settings.Default.MinimizeOnStartup) {
+                SetVisibility(false);
             }
 
         }
@@ -266,6 +261,11 @@ namespace iTunesRichPresence_Rewrite {
                     "We failed to create the COM object used to communicate with iTunes. This commonly occurs due to having the Windows Store version of iTunes installed, or running iTunes as a different user than the current user (such as running either this app or iTunes as admin). Please double-check your iTunes installation and try running this app again.", MessageDialogStyle.Affirmative, new MetroDialogSettings { AffirmativeButtonText = "Close" });
                 Environment.Exit(1);
             }
+        }
+
+        private void MinimizeOnStartupCheckBox_OnClick(object sender, RoutedEventArgs e) {
+            Settings.Default.MinimizeOnStartup = MinimizeOnStartupCheckBox.IsChecked ?? false;
+            Settings.Default.Save();
         }
     }
 }

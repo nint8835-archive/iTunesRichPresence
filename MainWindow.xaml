@@ -57,9 +57,11 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <CheckBox x:Name="RunOnStartupCheckBox" Content="Run on startup" HorizontalAlignment="Left" Click="RunOnStartupCheckBox_OnClick" Grid.Row="0" Margin="0,0,0,15"/>
-                    <Grid Grid.Row="1" Margin="0,0,0,15">
+                    <CheckBox x:Name="MinimizeOnStartupCheckBox" Content="Minimize on startup" HorizontalAlignment="Left" Click="MinimizeOnStartupCheckBox_OnClick" Grid.Row="1" Margin="0,0,0,15"/>
+                    <Grid Grid.Row="2" Margin="0,0,0,15">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="3*"/>
@@ -67,7 +69,7 @@
                         <Label Content="Accent colour:" Grid.Column="0"/>
                         <ComboBox Name="ThemeComboBox" SelectionChanged="ThemeComboBox_OnSelectionChanged" Grid.Column="1"/>
                     </Grid>
-                    <Grid Grid.Row="2" Margin="0,0,0,15">
+                    <Grid Grid.Row="3" Margin="0,0,0,15">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="3*"/>
@@ -75,9 +77,9 @@
                         <Label Content="App name:" Grid.Column="0"/>
                         <ComboBox Name="AppNameComboBox" SelectionChanged="AppNameComboBox_OnSelectionChanged" Grid.Column="1"/>
                     </Grid>
-                    <CheckBox x:Name="ClearOnPauseCheckBox" Content="Clear status when paused" HorizontalAlignment="Left" Click="ClearOnPauseCheckBox_OnClick" Grid.Row="3" Margin="0,0,0,15"/>
-                    <CheckBox x:Name="ExperimentsCheckBox" Content="Enable experiments" HorizontalAlignment="Left" Click="ExperimentsCheckBox_OnClick" Grid.Row="4" Margin="0,0,0,15"/>
-                    <Grid Grid.Row="5" Margin="0,0,0,15">
+                    <CheckBox x:Name="ClearOnPauseCheckBox" Content="Clear status when paused" HorizontalAlignment="Left" Click="ClearOnPauseCheckBox_OnClick" Grid.Row="4" Margin="0,0,0,15"/>
+                    <CheckBox x:Name="ExperimentsCheckBox" Content="Enable experiments" HorizontalAlignment="Left" Click="ExperimentsCheckBox_OnClick" Grid.Row="5" Margin="0,0,0,15"/>
+                    <Grid Grid.Row="6" Margin="0,0,0,15">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="3*"/>
@@ -85,8 +87,8 @@
                         <Label Name="PatreonEmailLabel" Content="Patreon email:" Grid.Column="0"/>
                         <TextBox Name="PatreonEmailTextBox" Grid.Column="1"/>
                     </Grid>
-                    <CheckBox x:Name="AlbumArtCheckBox" Content="Enable album art support" HorizontalAlignment="Left" Click="ExperimentsCheckBox_OnClick" Grid.Row="6" Margin="0,0,0,15"/>
-                    <Label Name="PatreonStatusLabel" Content="Patreon status: Unchecked" Grid.Row="7" Margin="0,0,0,15"/>
+                    <CheckBox x:Name="AlbumArtCheckBox" Content="Enable album art support" HorizontalAlignment="Left" Click="ExperimentsCheckBox_OnClick" Grid.Row="7" Margin="0,0,0,15"/>
+                    <Label Name="PatreonStatusLabel" Content="Patreon status: Unchecked" Grid.Row="8" Margin="0,0,0,15"/>
 
                 </Grid>
             </controls:Flyout>
