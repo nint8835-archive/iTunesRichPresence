@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Interop;
 using iTunesLib;
 using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro;
@@ -135,11 +136,17 @@ namespace iTunesRichPresence_Rewrite {
             }
         }
 
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         private void SetVisibility(bool visible) {
             ShowInTaskbar = visible;
             Visibility = visible ? Visibility.Visible : Visibility.Hidden;
             _notifyIcon.Visible = !visible;
             WindowState = visible ? WindowState.Normal : WindowState.Minimized;
+            if (visible) {
+                ShowWindow(new WindowInteropHelper(this).Handle, 9);
+            }
         }
 
         private void MetroWindow_StateChanged(object sender, EventArgs e) {
