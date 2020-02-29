@@ -115,8 +115,6 @@
   },
   "dependencies": {
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-redux": "^7.0.3",
-    "redux": "^4.0.1"
+    "react-dom": "^16.8.6"
   }
 }
