@@ -1,6 +1,6 @@
 {
-  "name": "electron-react-typescript",
-  "version": "0.0.7",
+  "name": "itunesrichpresence",
+  "version": "3.0.0-dev",
   "description": "",
   "main": "./dist/main.js",
   "scripts": {
@@ -32,8 +32,8 @@
     ]
   },
   "build": {
-    "productName": "ProductName",
-    "appId": "org.your.productname",
+    "productName": "iTunesRichPresence",
+    "appId": "com.itunesrichpresence.app",
     "mac": {
       "category": "your.app.category.type"
     },
@@ -54,17 +54,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:Robinfr/electron-react-typescript.git"
+    "url": "git+ssh://git@github.com:nint8835/iTunesRichPresence.git"
   },
   "author": {
-    "name": "Your name",
-    "email": "Your email"
+    "name": "Riley Flynn",
+    "email": "riley@rileyflynn.me"
   },
   "license": "SEE LICENSE",
   "bugs": {
-    "url": "https://github.com/Robinfr/electron-react-typescript/issues"
+    "url": "https://github.com/nint8835/iTunesRichPresence/issues"
   },
-  "homepage": "https://github.com/Robinfr/electron-react-typescript",
+  "homepage": "https://github.com/nint8835/iTunesRichPresence/",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
@@ -78,8 +78,6 @@
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
     "@types/react-redux": "^7.0.9",
-    "@types/react-test-renderer": "^16.8.1",
-    "@types/webdriverio": "^4.8.7",
     "@types/webpack-env": "^1.13.3",
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
@@ -102,18 +100,13 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.1",
     "image-webpack-loader": "^4.6.0",
-    "jest": "^24.8.0",
     "lint-staged": "^10.0.7",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
     "react-hot-loader": "^4.8.8",
-    "react-test-renderer": "^16.8.6",
-    "redux-devtools-extension": "^2.13.5",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
-    "spectron": "^5.0.0",
     "style-loader": "^0.23.1",
-    "ts-jest": "^24.0.2",
     "typescript": "^3.4.5",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
