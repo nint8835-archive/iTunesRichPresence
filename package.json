@@ -73,6 +73,8 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@hot-loader/react-dom": "^16.8.6",
+    "@types/carbon-components-react": "^7.6.15",
+    "@types/carbon__icons-react": "^10.6.0",
     "@types/electron-devtools-installer": "^2.2.0",
     "@types/jest": "^24.0.13",
     "@types/react": "^16.8.18",
@@ -114,6 +116,9 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@carbon/icons-react": "^10.8.2",
+    "carbon-components": "^10.9.3",
+    "carbon-components-react": "^7.9.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
