@@ -1,8 +1,10 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import PresenceManager from './presence/PresenceManager';
 
 let win: BrowserWindow | null;
+const presenceManager = new PresenceManager();
 
 const installExtensions = async () => {
     const installer = require('electron-devtools-installer');

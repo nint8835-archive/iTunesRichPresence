@@ -13,8 +13,11 @@ export const NavBar: React.FunctionComponent<{}> = () => (
     <Header style={{ '-webkit-app-region': 'drag' }}>
         <HeaderName prefix="">iTunesRichPresence</HeaderName>
         <HeaderGlobalBar>
-            // @ts-ignore
-            <HeaderGlobalAction style={{ '-webkit-app-region': 'no-drag' }} onClick={window.close}>
+            <HeaderGlobalAction
+                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+                // @ts-ignore
+                style={{ '-webkit-app-region': 'no-drag' }}
+                onClick={window.close}>
                 <Close20 />
             </HeaderGlobalAction>
         </HeaderGlobalBar>
