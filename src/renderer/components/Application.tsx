@@ -14,7 +14,7 @@ const Application = () => {
             <NavBar />
             <Content>
                 <Form>
-                    <FormGroup>
+                    <FormGroup legendText="">
                         <TextInput
                             labelText="State"
                             id="state"
@@ -24,7 +24,7 @@ const Application = () => {
                             }}
                             />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup legendText="">
                         <TextInput
                             labelText="Details"
                             id="details"
