@@ -1,4 +1,11 @@
+import { FormGroup, TextInput } from 'carbon-components-react';
 import * as React from 'react';
 import { Page } from './Page';
 
-export const PresencePage: React.FunctionComponent<{}> = () => <Page>Presence page!</Page>;
+export const PresencePage: React.FunctionComponent<{}> = () => (
+    <Page>
+        <FormGroup legendText="Placeholder">
+            <TextInput labelText="" id="state" />
+        </FormGroup>
+    </Page>
+);

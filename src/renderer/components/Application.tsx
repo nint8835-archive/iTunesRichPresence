@@ -3,6 +3,7 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { createUseStyles } from 'react-jss';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import './index.scss';
 import { NavBar } from './NavBar';
 import { PresencePage } from './pages/PresencePage';
@@ -20,10 +21,12 @@ const Application = () => {
         <Router>
             <NavBar />
             <Content className={classes.content}>
-                <Switch>
-                    <Route path="/settings" component={SettingsPage} />
-                    <Route path="/" component={PresencePage} />
-                </Switch>
+                <AnimatePresence exitBeforeEnter initial={false}>
+                    <Switch>
+                        <Route path="/settings" component={SettingsPage} />
+                        <Route path="/" component={PresencePage} />
+                    </Switch>
+                </AnimatePresence>
             </Content>
         </Router>
     );
