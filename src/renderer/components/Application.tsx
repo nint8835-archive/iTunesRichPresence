@@ -22,7 +22,7 @@ const Application = () => {
         <Router>
             <NavBar />
             <Content className={classes.content}>
-                <AnimatePresence exitBeforeEnter initial={false}>
+                <AnimatePresence>
                     <Switch>
                         <Route path="/settings" component={SettingsPage} />
                         <Route path="/paused">

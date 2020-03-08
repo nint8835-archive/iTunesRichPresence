@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { FormGroup, TextInput } from 'carbon-components-react';
+import * as React from 'react';
 import { PlayerState } from '../../../main/itunes/types';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { TokenToolbox } from './TokenToolbox';
@@ -19,10 +19,18 @@ export const StateConfigEditor: React.FunctionComponent<StateConfigEditorProps> 
         `${PlayerState[playerState]}SecondLine`,
         ''
     );
+    const [lastFocusedInput, setLastFocusedInput] = React.useState('FirstLine');
     const focusMap = {
-        [`${PlayerState[playerState]}FirstLine`]: [firstLine, setFirstLine],
-        [`${PlayerState[playerState]}SecondLine`]: [secondLine, setSecondLine]
+        FirstLine: {
+            value: firstLine,
+            set: setFirstLine
+        },
+        SecondLine: {
+            value: secondLine,
+            set: setSecondLine
+        }
     };
+    const focusData = lastFocusedInput === 'FirstLine' ? focusMap.FirstLine : focusMap.SecondLine;
     return (
         <>
             <FormGroup legendText="First Line">
@@ -34,6 +42,9 @@ export const StateConfigEditor: React.FunctionComponent<StateConfigEditorProps> 
                         setFirstLine(event.currentTarget.value);
                     }}
                     invalid={firstLine.length === 0}
+                    onFocus={() => {
+                        setLastFocusedInput('FirstLine');
+                    }}
                 />
             </FormGroup>
             <FormGroup legendText="Second Line">
@@ -45,9 +56,12 @@ export const StateConfigEditor: React.FunctionComponent<StateConfigEditorProps> 
                         setSecondLine(event.currentTarget.value);
                     }}
                     invalid={secondLine.length === 0}
+                    onFocus={() => {
+                        setLastFocusedInput('SecondLine');
+                    }}
                 />
             </FormGroup>
-            <TokenToolbox />
+            <TokenToolbox lastFocusedText={focusData.value} setLastFocusedText={focusData.set} />
         </>
     );
 };
