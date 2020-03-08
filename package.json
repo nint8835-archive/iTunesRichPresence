@@ -118,7 +118,6 @@
   },
   "dependencies": {
     "@carbon/icons-react": "^10.8.2",
-    "@carbon/themes": "^10.9.3",
     "carbon-components": "^10.9.3",
     "carbon-components-react": "^7.9.3",
     "discord-rpc": "^3.1.0",
