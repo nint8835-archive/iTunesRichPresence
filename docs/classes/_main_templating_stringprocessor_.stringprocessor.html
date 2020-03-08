@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ITunesBridge | itunesrichpresence</title>
+	<title>StringProcessor | itunesrichpresence</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_main_itunes_types_.html">&quot;main/itunes/types&quot;</a>
+					<a href="../modules/_main_templating_stringprocessor_.html">&quot;main/templating/StringProcessor&quot;</a>
 				</li>
 				<li>
-					<a href="_main_itunes_types_.itunesbridge.html">ITunesBridge</a>
+					<a href="_main_templating_stringprocessor_.stringprocessor.html">StringProcessor</a>
 				</li>
 			</ul>
-			<h1>Interface ITunesBridge</h1>
+			<h1>Class StringProcessor</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Represents an interface with which we can interact with iTunes.</p>
+						<p>Handles processing of template strings into presence-ready strings.</p>
 					</div>
 				</div>
 			</section>
@@ -80,14 +80,8 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ITunesBridge</span>
+						<span class="target">StringProcessor</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/_main_itunes_windows_bridge_.windowsitunesbridge.html" class="tsd-signature-type">WindowsITunesBridge</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -95,86 +89,111 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_main_templating_stringprocessor_.stringprocessor.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_main_templating_stringprocessor_.stringprocessor.html#bridge" class="tsd-kind-icon">bridge</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_main_templating_stringprocessor_.stringprocessor.html#tokens" class="tsd-kind-icon">tokens</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_main_itunes_types_.itunesbridge.html#getcurrentposition" class="tsd-kind-icon">get<wbr>Current<wbr>Position</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_main_itunes_types_.itunesbridge.html#getcurrentsong" class="tsd-kind-icon">get<wbr>Current<wbr>Song</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_main_itunes_types_.itunesbridge.html#getplayerstate" class="tsd-kind-icon">get<wbr>Player<wbr>State</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_main_templating_stringprocessor_.stringprocessor.html#render" class="tsd-kind-icon">render</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>String<wbr>Processor<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_main_templating_stringprocessor_.stringprocessor.html" class="tsd-signature-type">StringProcessor</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/templating/StringProcessor.ts#L26">src/main/templating/StringProcessor.ts:26</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="_main_templating_stringprocessor_.stringprocessor.html" class="tsd-signature-type">StringProcessor</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="bridge" class="tsd-anchor"></a>
+					<h3>bridge</h3>
+					<div class="tsd-signature tsd-kind-icon">bridge<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_main_itunes_types_.itunesbridge.html" class="tsd-signature-type">ITunesBridge</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/templating/StringProcessor.ts#L22">src/main/templating/StringProcessor.ts:22</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The bridge instance that will be used to interact with iTunes.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="tokens" class="tsd-anchor"></a>
+					<h3>tokens</h3>
+					<div class="tsd-signature tsd-kind-icon">tokens<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_main_templating_types_.token.html" class="tsd-signature-type">Token</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/templating/StringProcessor.ts#L26">src/main/templating/StringProcessor.ts:26</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The list of tokens that will be available to users.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="getcurrentposition" class="tsd-anchor"></a>
-					<h3>get<wbr>Current<wbr>Position</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Current<wbr>Position<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="render" class="tsd-anchor"></a>
+					<h3>render</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">render<span class="tsd-signature-symbol">(</span>template<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/itunes/types.ts#L17">src/main/itunes/types.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/templating/StringProcessor.ts#L38">src/main/templating/StringProcessor.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets the current position of the player on the current track.</p>
+									<p>Render a template string into a presence-ready string.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The number of seconds the player is into the current track, or
-							null if no song is being played.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="getcurrentsong" class="tsd-anchor"></a>
-					<h3>get<wbr>Current<wbr>Song</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Current<wbr>Song<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_main_itunes_types_.html#currentsong" class="tsd-signature-type">CurrentSong</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/itunes/types.ts#L11">src/main/itunes/types.ts:11</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Gets the song currently being played by iTunes.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_main_itunes_types_.html#currentsong" class="tsd-signature-type">CurrentSong</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A promise resolving to either the current song, or null if no
-							song is being played.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="getplayerstate" class="tsd-anchor"></a>
-					<h3>get<wbr>Player<wbr>State</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Player<wbr>State<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/_main_itunes_types_.playerstate.html" class="tsd-signature-type">PlayerState</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/itunes/types.ts#L22">src/main/itunes/types.ts:22</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Gets the current state of the player.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/_main_itunes_types_.playerstate.html" class="tsd-signature-type">PlayerState</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The current playback state of the player.</p>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>template: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The template string to render.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The rendered string.</p>
 						</li>
 					</ul>
 				</section>
@@ -189,7 +208,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_main_itunes_index_.html">&quot;main/itunes/index&quot;</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_main_itunes_types_.html">&quot;main/itunes/types&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -204,7 +223,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_main_presence_presencemanager_.html">&quot;main/presence/<wbr>Presence<wbr>Manager&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_main_templating_stringprocessor_.html">&quot;main/templating/<wbr>String<wbr>Processor&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -244,44 +263,29 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_main_itunes_types_.playerstate.html" class="tsd-kind-icon">Player<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_main_itunes_types_.playlistkind.html" class="tsd-kind-icon">Playlist<wbr>Kind</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_main_itunes_types_.playlistspecialkind.html" class="tsd-kind-icon">Playlist<wbr>Special<wbr>Kind</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_main_itunes_types_.trackkind.html" class="tsd-kind-icon">Track<wbr>Kind</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_main_itunes_types_.itunesbridgeerror.html" class="tsd-kind-icon">ITunes<wbr>Bridge<wbr>Error</a>
-					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_main_itunes_types_.itunesbridge.html" class="tsd-kind-icon">ITunes<wbr>Bridge</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_main_templating_stringprocessor_.stringprocessor.html" class="tsd-kind-icon">String<wbr>Processor</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_main_itunes_types_.itunesbridge.html#getcurrentposition" class="tsd-kind-icon">get<wbr>Current<wbr>Position</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_main_templating_stringprocessor_.stringprocessor.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_main_itunes_types_.itunesbridge.html#getcurrentsong" class="tsd-kind-icon">get<wbr>Current<wbr>Song</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_main_templating_stringprocessor_.stringprocessor.html#bridge" class="tsd-kind-icon">bridge</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_main_itunes_types_.itunesbridge.html#getplayerstate" class="tsd-kind-icon">get<wbr>Player<wbr>State</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_main_templating_stringprocessor_.stringprocessor.html#tokens" class="tsd-kind-icon">tokens</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_main_templating_stringprocessor_.stringprocessor.html#render" class="tsd-kind-icon">render</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_main_itunes_types_.html#currentsong" class="tsd-kind-icon">Current<wbr>Song</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_main_itunes_types_.html#playlist-1" class="tsd-kind-icon">Playlist</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_main_templating_stringprocessor_.html#viewobject" class="tsd-kind-icon">View<wbr>Object</a>
 					</li>
 				</ul>
 			</nav>
