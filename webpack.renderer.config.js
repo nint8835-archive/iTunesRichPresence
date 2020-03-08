@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
@@ -43,7 +44,17 @@ module.exports = merge.smart(baseConfig, {
             {
                 test: /\.scss$/,
                 // exclude: /\.module\.scss$/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
+                loaders: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [autoprefixer()]
+                        }
+                    },
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.css$/,

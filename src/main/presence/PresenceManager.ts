@@ -3,6 +3,11 @@ import * as DiscordRPC from 'discord-rpc';
 import getBridge from '../itunes';
 import StringProcessor from '../templating/StringProcessor';
 
+export const APP_IDS = {
+    iTunes: '383816327850360843',
+    'Apple Music': '529435150472183819'
+};
+
 export default class PresenceManager {
     rpcClient: DiscordRPC.Client;
     stringProcessor: StringProcessor;
