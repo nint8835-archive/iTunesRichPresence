@@ -9,6 +9,39 @@ export interface ITunesBridge {
      *   song is being played.
      */
     getCurrentSong(): Promise<CurrentSong | null>;
+    /**
+     * Gets the current position of the player on the current track.
+     * @returns The number of seconds the player is into the current track, or
+     *   null if no song is being played.
+     */
+    getCurrentPosition(): Promise<number | null>;
+    /**
+     * Gets the current state of the player.
+     * @returns The current playback state of the player.
+     */
+    getPlayerState(): Promise<PlayerState>;
+}
+
+/**
+ * Represents the state of the player.
+ */
+export enum PlayerState {
+    /**
+     * Player is stopped.
+     */
+    ITPlayerStateStopped,
+    /**
+     * Player is playing.
+     */
+    ITPlayerStatePlaying,
+    /**
+     * Player is fast-forwarding.
+     */
+    ITPlayerStateFastForward,
+    /**
+     * Player is rewinding.
+     */
+    ITPlayerStateRewind
 }
 
 /**
@@ -200,3 +233,8 @@ export type CurrentSong = {
      */
     AlbumArtist: string;
 };
+
+/**
+ * Represents an error raised when communicating with iTunes from a bridge.
+ */
+export class ITunesBridgeError extends Error {}

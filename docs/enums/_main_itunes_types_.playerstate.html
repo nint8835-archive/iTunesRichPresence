@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ITunesBridge | itunesrichpresence</title>
+	<title>PlayerState | itunesrichpresence</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -59,10 +59,10 @@
 					<a href="../modules/_main_itunes_types_.html">&quot;main/itunes/types&quot;</a>
 				</li>
 				<li>
-					<a href="_main_itunes_types_.itunesbridge.html">ITunesBridge</a>
+					<a href="_main_itunes_types_.playerstate.html">PlayerState</a>
 				</li>
 			</ul>
-			<h1>Interface ITunesBridge</h1>
+			<h1>Enumeration PlayerState</h1>
 		</div>
 	</div>
 </header>
@@ -72,111 +72,87 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Represents an interface with which we can interact with iTunes.</p>
+						<p>Represents the state of the player.</p>
 					</div>
 				</div>
-			</section>
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">ITunesBridge</span>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/_main_itunes_windows_bridge_.windowsitunesbridge.html" class="tsd-signature-type">WindowsITunesBridge</a></li>
-				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_main_itunes_types_.itunesbridge.html#getcurrentposition" class="tsd-kind-icon">get<wbr>Current<wbr>Position</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_main_itunes_types_.itunesbridge.html#getcurrentsong" class="tsd-kind-icon">get<wbr>Current<wbr>Song</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_main_itunes_types_.itunesbridge.html#getplayerstate" class="tsd-kind-icon">get<wbr>Player<wbr>State</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_main_itunes_types_.playerstate.html#itplayerstatefastforward" class="tsd-kind-icon">ITPlayer<wbr>State<wbr>Fast<wbr>Forward</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_main_itunes_types_.playerstate.html#itplayerstateplaying" class="tsd-kind-icon">ITPlayer<wbr>State<wbr>Playing</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_main_itunes_types_.playerstate.html#itplayerstaterewind" class="tsd-kind-icon">ITPlayer<wbr>State<wbr>Rewind</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_main_itunes_types_.playerstate.html#itplayerstatestopped" class="tsd-kind-icon">ITPlayer<wbr>State<wbr>Stopped</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="getcurrentposition" class="tsd-anchor"></a>
-					<h3>get<wbr>Current<wbr>Position</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Current<wbr>Position<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/5877b35/src/main/itunes/types.ts#L17">src/main/itunes/types.ts:17</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Gets the current position of the player on the current track.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The number of seconds the player is into the current track, or
-							null if no song is being played.</p>
-						</li>
-					</ul>
+				<h2>Enumeration members</h2>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="itplayerstatefastforward" class="tsd-anchor"></a>
+					<h3>ITPlayer<wbr>State<wbr>Fast<wbr>Forward</h3>
+					<div class="tsd-signature tsd-kind-icon">ITPlayer<wbr>State<wbr>Fast<wbr>Forward<span class="tsd-signature-symbol">:</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/5877b35/src/main/itunes/types.ts#L40">src/main/itunes/types.ts:40</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Player is fast-forwarding.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="getcurrentsong" class="tsd-anchor"></a>
-					<h3>get<wbr>Current<wbr>Song</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Current<wbr>Song<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_main_itunes_types_.html#currentsong" class="tsd-signature-type">CurrentSong</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/5877b35/src/main/itunes/types.ts#L11">src/main/itunes/types.ts:11</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Gets the song currently being played by iTunes.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_main_itunes_types_.html#currentsong" class="tsd-signature-type">CurrentSong</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A promise resolving to either the current song, or null if no
-							song is being played.</p>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="itplayerstateplaying" class="tsd-anchor"></a>
+					<h3>ITPlayer<wbr>State<wbr>Playing</h3>
+					<div class="tsd-signature tsd-kind-icon">ITPlayer<wbr>State<wbr>Playing<span class="tsd-signature-symbol">:</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/5877b35/src/main/itunes/types.ts#L36">src/main/itunes/types.ts:36</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Player is playing.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="getplayerstate" class="tsd-anchor"></a>
-					<h3>get<wbr>Player<wbr>State</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Player<wbr>State<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/_main_itunes_types_.playerstate.html" class="tsd-signature-type">PlayerState</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/5877b35/src/main/itunes/types.ts#L22">src/main/itunes/types.ts:22</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Gets the current state of the player.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/_main_itunes_types_.playerstate.html" class="tsd-signature-type">PlayerState</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The current playback state of the player.</p>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="itplayerstaterewind" class="tsd-anchor"></a>
+					<h3>ITPlayer<wbr>State<wbr>Rewind</h3>
+					<div class="tsd-signature tsd-kind-icon">ITPlayer<wbr>State<wbr>Rewind<span class="tsd-signature-symbol">:</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/5877b35/src/main/itunes/types.ts#L44">src/main/itunes/types.ts:44</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Player is rewinding.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="itplayerstatestopped" class="tsd-anchor"></a>
+					<h3>ITPlayer<wbr>State<wbr>Stopped</h3>
+					<div class="tsd-signature tsd-kind-icon">ITPlayer<wbr>State<wbr>Stopped<span class="tsd-signature-symbol">:</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/5877b35/src/main/itunes/types.ts#L32">src/main/itunes/types.ts:32</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Player is stopped.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -217,39 +193,42 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_main_itunes_types_.playerstate.html" class="tsd-kind-icon">Player<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_main_itunes_types_.playlistkind.html" class="tsd-kind-icon">Playlist<wbr>Kind</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_main_itunes_types_.playlistspecialkind.html" class="tsd-kind-icon">Playlist<wbr>Special<wbr>Kind</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_main_itunes_types_.trackkind.html" class="tsd-kind-icon">Track<wbr>Kind</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_main_itunes_types_.itunesbridgeerror.html" class="tsd-kind-icon">ITunes<wbr>Bridge<wbr>Error</a>
-					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_main_itunes_types_.itunesbridge.html" class="tsd-kind-icon">ITunes<wbr>Bridge</a>
+					<li class="current tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="_main_itunes_types_.playerstate.html" class="tsd-kind-icon">Player<wbr>State</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_main_itunes_types_.itunesbridge.html#getcurrentposition" class="tsd-kind-icon">get<wbr>Current<wbr>Position</a>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_main_itunes_types_.playerstate.html#itplayerstatefastforward" class="tsd-kind-icon">ITPlayer<wbr>State<wbr>Fast<wbr>Forward</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_main_itunes_types_.itunesbridge.html#getcurrentsong" class="tsd-kind-icon">get<wbr>Current<wbr>Song</a>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_main_itunes_types_.playerstate.html#itplayerstateplaying" class="tsd-kind-icon">ITPlayer<wbr>State<wbr>Playing</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_main_itunes_types_.itunesbridge.html#getplayerstate" class="tsd-kind-icon">get<wbr>Player<wbr>State</a>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_main_itunes_types_.playerstate.html#itplayerstaterewind" class="tsd-kind-icon">ITPlayer<wbr>State<wbr>Rewind</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="_main_itunes_types_.playerstate.html#itplayerstatestopped" class="tsd-kind-icon">ITPlayer<wbr>State<wbr>Stopped</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="_main_itunes_types_.playlistkind.html" class="tsd-kind-icon">Playlist<wbr>Kind</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="_main_itunes_types_.playlistspecialkind.html" class="tsd-kind-icon">Playlist<wbr>Special<wbr>Kind</a>
+					</li>
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="_main_itunes_types_.trackkind.html" class="tsd-kind-icon">Track<wbr>Kind</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_main_itunes_types_.itunesbridgeerror.html" class="tsd-kind-icon">ITunes<wbr>Bridge<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_main_itunes_types_.itunesbridge.html" class="tsd-kind-icon">ITunes<wbr>Bridge</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/_main_itunes_types_.html#currentsong" class="tsd-kind-icon">Current<wbr>Song</a>
 					</li>

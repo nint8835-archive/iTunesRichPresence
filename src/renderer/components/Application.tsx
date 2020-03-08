@@ -41,6 +41,13 @@ const Application = () => {
                         }}>
                         Apply presence
                     </Button>
+                    <Button
+                        renderIcon={WatsonHealthLaunchStudy_120}
+                        onClick={() => {
+                            ipcRenderer.send('get-song');
+                        }}>
+                        Get current song
+                    </Button>
                 </Form>
             </Content>
         </div>
