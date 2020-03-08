@@ -126,12 +126,5 @@
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "register-scheme": "github:devsnek/node-register-scheme"
-    },
-    "compilerOptions": {
-        "normalTypeScriptOptions": "here"
-    },
-    "typedocOptions": {
-        "mode": "modules",
-        "out": "docs"
     }
 }
