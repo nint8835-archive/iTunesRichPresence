@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;renderer/components/NavBar&quot; | itunesrichpresence</title>
+	<title>PlaylistNameToken | itunesrichpresence</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,45 +56,127 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_renderer_components_navbar_.html">&quot;renderer/components/NavBar&quot;</a>
+					<a href="../modules/_main_templating_tokens_playlistnametoken_.html">&quot;main/templating/tokens/PlaylistNameToken&quot;</a>
+				</li>
+				<li>
+					<a href="_main_templating_tokens_playlistnametoken_.playlistnametoken.html">PlaylistNameToken</a>
 				</li>
 			</ul>
-			<h1>External module &quot;renderer/components/NavBar&quot;</h1>
+			<h1>Class PlaylistNameToken</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Token which when rendered will give the current playlist&#39;s name.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">PlaylistNameToken</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_main_templating_types_.token.html" class="tsd-signature-type">Token</a></li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Functions</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_renderer_components_navbar_.html#navbar" class="tsd-kind-icon">Nav<wbr>Bar</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_main_templating_tokens_playlistnametoken_.playlistnametoken.html#displayname" class="tsd-kind-icon">display<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_main_templating_tokens_playlistnametoken_.playlistnametoken.html#token" class="tsd-kind-icon">token</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_main_templating_tokens_playlistnametoken_.playlistnametoken.html#render" class="tsd-kind-icon">render</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="navbar" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> Nav<wbr>Bar</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">Nav<wbr>Bar<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span></li>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="displayname" class="tsd-anchor"></a>
+					<h3>display<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">display<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Playlist Name&quot;</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_main_templating_types_.token.html">Token</a>.<a href="../interfaces/_main_templating_types_.token.html#displayname">displayName</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/templating/tokens/PlaylistNameToken.ts#L15">src/main/templating/tokens/PlaylistNameToken.ts:15</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The display name for the token toolbox.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="token" class="tsd-anchor"></a>
+					<h3>token</h3>
+					<div class="tsd-signature tsd-kind-icon">token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;playlist_name&quot;</span></div>
+					<aside class="tsd-sources">
+						<p>Implementation of <a href="../interfaces/_main_templating_types_.token.html">Token</a>.<a href="../interfaces/_main_templating_types_.token.html#token">token</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/templating/tokens/PlaylistNameToken.ts#L11">src/main/templating/tokens/PlaylistNameToken.ts:11</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The token to be replaced.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="render" class="tsd-anchor"></a>
+					<h3>render</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">render<span class="tsd-signature-symbol">(</span>currentSong<span class="tsd-signature-symbol">: </span><a href="../modules/_main_itunes_types_.html#currentsong" class="tsd-signature-type">CurrentSong</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_main_templating_types_.token.html">Token</a>.<a href="../interfaces/_main_templating_types_.token.html#render">render</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/renderer/components/NavBar.tsx#L10">src/renderer/components/NavBar.tsx:10</a></li>
+									<li>Defined in <a href="https://github.com/nint8835/iTunesRichPresence/blob/292c534/src/main/templating/tokens/PlaylistNameToken.ts#L22">src/main/templating/tokens/PlaylistNameToken.ts:22</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Render the contents of this token.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>currentSong: <a href="../modules/_main_itunes_types_.html#currentsong" class="tsd-signature-type">CurrentSong</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The currently playing song.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>The new contents of this token.</p>
 						</li>
 					</ul>
 				</section>
@@ -107,66 +189,81 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_itunes_index_.html">&quot;main/itunes/index&quot;</a>
+						<a href="../modules/_main_itunes_index_.html">&quot;main/itunes/index&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_itunes_types_.html">&quot;main/itunes/types&quot;</a>
+						<a href="../modules/_main_itunes_types_.html">&quot;main/itunes/types&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_itunes_windows_bridge_.html">&quot;main/itunes/windows/bridge&quot;</a>
+						<a href="../modules/_main_itunes_windows_bridge_.html">&quot;main/itunes/windows/bridge&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_itunes_windows_utils_.html">&quot;main/itunes/windows/utils&quot;</a>
+						<a href="../modules/_main_itunes_windows_utils_.html">&quot;main/itunes/windows/utils&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_main_.html">&quot;main/main&quot;</a>
+						<a href="../modules/_main_main_.html">&quot;main/main&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_presence_presencemanager_.html">&quot;main/presence/<wbr>Presence<wbr>Manager&quot;</a>
+						<a href="../modules/_main_presence_presencemanager_.html">&quot;main/presence/<wbr>Presence<wbr>Manager&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_templating_stringprocessor_.html">&quot;main/templating/<wbr>String<wbr>Processor&quot;</a>
+						<a href="../modules/_main_templating_stringprocessor_.html">&quot;main/templating/<wbr>String<wbr>Processor&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_templating_tokens_albumtoken_.html">&quot;main/templating/tokens/<wbr>Album<wbr>Token&quot;</a>
+						<a href="../modules/_main_templating_tokens_albumtoken_.html">&quot;main/templating/tokens/<wbr>Album<wbr>Token&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_templating_tokens_artisttoken_.html">&quot;main/templating/tokens/<wbr>Artist<wbr>Token&quot;</a>
+						<a href="../modules/_main_templating_tokens_artisttoken_.html">&quot;main/templating/tokens/<wbr>Artist<wbr>Token&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_main_templating_tokens_playcounttoken_.html">&quot;main/templating/tokens/<wbr>Play<wbr>Count<wbr>Token&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_main_templating_tokens_playlistnametoken_.html">&quot;main/templating/tokens/<wbr>Playlist<wbr>Name<wbr>Token&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_main_templating_tokens_playlisttypetoken_.html">&quot;main/templating/tokens/<wbr>Playlist<wbr>Type<wbr>Token&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_main_templating_tokens_songtoken_.html">&quot;main/templating/tokens/<wbr>Song<wbr>Token&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_main_templating_tokens_index_.html">&quot;main/templating/tokens/index&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_main_templating_types_.html">&quot;main/templating/types&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_renderer_app_.html">&quot;renderer/app&quot;</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_renderer_components_application_.html">&quot;renderer/components/<wbr>Application&quot;</a>
+						<a href="../modules/_main_templating_tokens_playcounttoken_.html">&quot;main/templating/tokens/<wbr>Play<wbr>Count<wbr>Token&quot;</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_renderer_components_navbar_.html">&quot;renderer/components/<wbr>Nav<wbr>Bar&quot;</a>
+						<a href="../modules/_main_templating_tokens_playlistnametoken_.html">&quot;main/templating/tokens/<wbr>Playlist<wbr>Name<wbr>Token&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_main_templating_tokens_playlisttypetoken_.html">&quot;main/templating/tokens/<wbr>Playlist<wbr>Type<wbr>Token&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_main_templating_tokens_songtoken_.html">&quot;main/templating/tokens/<wbr>Song<wbr>Token&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_main_templating_tokens_index_.html">&quot;main/templating/tokens/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_main_templating_types_.html">&quot;main/templating/types&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_app_.html">&quot;renderer/app&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_components_application_.html">&quot;renderer/components/<wbr>Application&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_renderer_components_navbar_.html">&quot;renderer/components/<wbr>Nav<wbr>Bar&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_renderer_components_navbar_.html#navbar" class="tsd-kind-icon">Nav<wbr>Bar</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_main_templating_tokens_playlistnametoken_.playlistnametoken.html" class="tsd-kind-icon">Playlist<wbr>Name<wbr>Token</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_main_templating_tokens_playlistnametoken_.playlistnametoken.html#displayname" class="tsd-kind-icon">display<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_main_templating_tokens_playlistnametoken_.playlistnametoken.html#token" class="tsd-kind-icon">token</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_main_templating_tokens_playlistnametoken_.playlistnametoken.html#render" class="tsd-kind-icon">render</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>
