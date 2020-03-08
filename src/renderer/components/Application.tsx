@@ -1,56 +1,31 @@
-import { hot } from 'react-hot-loader/root';
+import { Content } from 'carbon-components-react';
 import * as React from 'react';
-import { Form, TextInput, Content, FormGroup, Button } from 'carbon-components-react';
-import { WatsonHealthLaunchStudy_120 } from '@carbon/icons-react';
-import { ipcRenderer } from 'electron';
-import { NavBar } from './NavBar';
+import { hot } from 'react-hot-loader/root';
+import { createUseStyles } from 'react-jss';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import './index.scss';
+import { NavBar } from './NavBar';
+import { PresencePage } from './pages/PresencePage';
+import { SettingsPage } from './pages/SettingsPage';
+
+const useStyles = createUseStyles({
+    content: {
+        marginLeft: '3rem'
+    }
+});
 
 const Application = () => {
-    const [stateText, setStateText] = React.useState('');
-    const [detailsText, setDetailsText] = React.useState('');
+    const classes = useStyles();
     return (
-        <div>
+        <Router>
             <NavBar />
-            <Content>
-                <Form>
-                    <FormGroup legendText="">
-                        <TextInput
-                            labelText="State"
-                            id="state"
-                            value={stateText}
-                            onChange={e => {
-                                setStateText(e.target.value);
-                            }}
-                            />
-                    </FormGroup>
-                    <FormGroup legendText="">
-                        <TextInput
-                            labelText="Details"
-                            id="details"
-                            value={detailsText}
-                            onChange={e => {
-                                setDetailsText(e.target.value);
-                            }}
-                            />
-                    </FormGroup>
-                    <Button
-                        renderIcon={WatsonHealthLaunchStudy_120}
-                        onClick={() => {
-                            ipcRenderer.send('update-presence', stateText, detailsText);
-                        }}>
-                        Apply presence
-                    </Button>
-                    <Button
-                        renderIcon={WatsonHealthLaunchStudy_120}
-                        onClick={() => {
-                            ipcRenderer.send('get-song');
-                        }}>
-                        Get current song
-                    </Button>
-                </Form>
+            <Content className={classes.content}>
+                <Switch>
+                    <Route path="/settings" component={SettingsPage} />
+                    <Route path="/" component={PresencePage} />
+                </Switch>
             </Content>
-        </div>
+        </Router>
     );
 };
 

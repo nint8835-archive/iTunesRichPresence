@@ -1,13 +1,17 @@
-import * as React from 'react';
+import { Blog16, Close20, Settings16 } from '@carbon/icons-react';
 import {
     Header,
-    HeaderName,
+    HeaderGlobalAction,
     HeaderGlobalBar,
-    HeaderGlobalAction
+    HeaderName,
+    SideNav,
+    SideNavItems
 } from 'carbon-components-react/lib/components/UIShell';
-import { Close20 } from '@carbon/icons-react';
+import * as React from 'react';
+import { withRouter } from 'react-router-dom';
+import { SidebarLink } from './SidebarLink';
 
-export const NavBar: React.FunctionComponent<{}> = () => (
+export const NavBar = withRouter(({ history }) => (
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     <Header style={{ '-webkit-app-region': 'drag' }}>
@@ -17,9 +21,21 @@ export const NavBar: React.FunctionComponent<{}> = () => (
                 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
                 // @ts-ignore
                 style={{ '-webkit-app-region': 'no-drag' }}
-                onClick={window.close}>
+                onClick={window.close}
+            >
                 <Close20 />
             </HeaderGlobalAction>
         </HeaderGlobalBar>
+        <SideNav isRail>
+            <SideNavItems>
+                <SidebarLink icon={Blog16} route="/" history={history} text="Presence" />
+                <SidebarLink
+                    icon={Settings16}
+                    route="/settings"
+                    history={history}
+                    text="Settings"
+                />
+            </SideNavItems>
+        </SideNav>
     </Header>
-);
+));

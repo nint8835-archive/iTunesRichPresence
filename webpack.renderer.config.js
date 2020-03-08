@@ -42,7 +42,7 @@ module.exports = merge.smart(baseConfig, {
             },
             {
                 test: /\.scss$/,
-                exclude: /\.module\.scss$/,
+                // exclude: /\.module\.scss$/,
                 loaders: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
