@@ -1,128 +1,130 @@
 {
-  "name": "itunesrichpresence",
-  "version": "3.0.0-dev",
-  "description": "",
-  "main": "./dist/main.js",
-  "scripts": {
-    "build-main": "cross-env NODE_ENV=production webpack --config webpack.main.prod.config.js",
-    "build-renderer": "cross-env NODE_ENV=production webpack --config webpack.renderer.prod.config.js",
-    "build": "npm run build-main && npm run build-renderer",
-    "start-renderer-dev": "webpack-dev-server --config webpack.renderer.dev.config.js",
-    "start-main-dev": "webpack --config webpack.main.config.js && electron ./dist/main.js",
-    "start-dev": "cross-env START_HOT=1 npm run start-renderer-dev",
-    "prestart": "npm run build",
-    "start": "electron .",
-    "lint": "eslint --ext=jsx,js,tsx,ts src",
-    "pack": "npm run build && electron-builder --dir",
-    "dist": "npm run build && electron-builder",
-    "postinstall": "electron-builder install-app-deps"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "itunesrichpresence",
+    "version": "3.0.0-dev",
+    "description": "",
+    "main": "./dist/main.js",
+    "scripts": {
+        "build-main": "cross-env NODE_ENV=production webpack --config webpack.main.prod.config.js",
+        "build-renderer": "cross-env NODE_ENV=production webpack --config webpack.renderer.prod.config.js",
+        "build": "npm run build-main && npm run build-renderer",
+        "start-renderer-dev": "webpack-dev-server --config webpack.renderer.dev.config.js",
+        "start-main-dev": "webpack --config webpack.main.config.js && electron ./dist/main.js",
+        "start-dev": "cross-env START_HOT=1 npm run start-renderer-dev",
+        "prestart": "npm run build",
+        "start": "electron .",
+        "lint": "eslint --ext=jsx,js,tsx,ts src",
+        "pack": "npm run build && electron-builder --dir",
+        "dist": "npm run build && electron-builder",
+        "postinstall": "electron-builder install-app-deps",
+        "dev-docs": "typedoc"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.{json,css,scss,md}": [
+            "prettier --config ./.prettierrc --write"
+        ],
+        "src/**/*.{js,ts,tsx}": [
+            "prettier --config ./.prettierrc --write",
+            "eslint --ext=jsx,js,ts,tsx --fix src"
+        ]
+    },
+    "build": {
+        "productName": "iTunesRichPresence",
+        "appId": "com.itunesrichpresence.app",
+        "mac": {
+            "category": "your.app.category.type"
+        },
+        "directories": {
+            "output": "release"
+        },
+        "files": [
+            "dist/",
+            "node_modules/",
+            "package.json"
+        ],
+        "linux": {
+            "target": "deb"
+        },
+        "win": {
+            "target": "nsis"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com:nint8835/iTunesRichPresence.git"
+    },
+    "author": {
+        "name": "Riley Flynn",
+        "email": "riley@rileyflynn.me"
+    },
+    "license": "SEE LICENSE",
+    "bugs": {
+        "url": "https://github.com/nint8835/iTunesRichPresence/issues"
+    },
+    "homepage": "https://github.com/nint8835/iTunesRichPresence/",
+    "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "@babel/plugin-proposal-class-properties": "^7.4.4",
+        "@babel/polyfill": "^7.4.4",
+        "@babel/preset-env": "^7.4.5",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/preset-typescript": "^7.3.3",
+        "@hot-loader/react-dom": "^16.8.6",
+        "@types/carbon-components-react": "^7.6.15",
+        "@types/carbon__icons-react": "^10.6.0",
+        "@types/discord-rpc": "^3.0.2",
+        "@types/electron-devtools-installer": "^2.2.0",
+        "@types/jest": "^24.0.13",
+        "@types/react": "^16.8.18",
+        "@types/react-dom": "^16.8.4",
+        "@types/react-redux": "^7.0.9",
+        "@types/webpack-env": "^1.13.3",
+        "@typescript-eslint/eslint-plugin": "^2.4.0",
+        "@typescript-eslint/parser": "^2.4.0",
+        "babel-loader": "^8.0.6",
+        "cross-env": "^5.1.3",
+        "css-loader": "^2.1.1",
+        "electron": "^3.1.9",
+        "electron-builder": "^22.3.2",
+        "electron-devtools-installer": "^2.2.4",
+        "eslint": "^6.5.1",
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-config-prettier": "^6.4.0",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.1",
+        "eslint-plugin-react": "^7.16.0",
+        "eslint-plugin-react-hooks": "^1.7.0",
+        "file-loader": "^3.0.1",
+        "fork-ts-checker-webpack-plugin": "^1.3.4",
+        "html-webpack-plugin": "^3.2.0",
+        "husky": "^4.2.1",
+        "image-webpack-loader": "^4.6.0",
+        "lint-staged": "^10.0.7",
+        "node-sass": "^4.12.0",
+        "prettier": "^1.18.2",
+        "react-hot-loader": "^4.8.8",
+        "sass-loader": "^7.1.0",
+        "source-map-loader": "^0.2.4",
+        "style-loader": "^0.23.1",
+        "typedoc": "^0.16.11",
+        "typescript": "^3.4.5",
+        "webpack": "^4.32.2",
+        "webpack-cli": "^3.3.2",
+        "webpack-dev-server": "^3.4.1",
+        "webpack-merge": "^4.2.1"
+    },
+    "dependencies": {
+        "@carbon/icons-react": "^10.8.2",
+        "carbon-components": "^10.9.3",
+        "carbon-components-react": "^7.9.3",
+        "discord-rpc": "^3.1.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "register-scheme": "github:devsnek/node-register-scheme"
     }
-  },
-  "lint-staged": {
-    "src/**/*.{json,css,scss,md}": [
-      "prettier --config ./.prettierrc --write"
-    ],
-    "src/**/*.{js,ts,tsx}": [
-      "prettier --config ./.prettierrc --write",
-      "eslint --ext=jsx,js,ts,tsx --fix src"
-    ]
-  },
-  "build": {
-    "productName": "iTunesRichPresence",
-    "appId": "com.itunesrichpresence.app",
-    "mac": {
-      "category": "your.app.category.type"
-    },
-    "directories": {
-      "output": "release"
-    },
-    "files": [
-      "dist/",
-      "node_modules/",
-      "package.json"
-    ],
-    "linux": {
-      "target": "deb"
-    },
-    "win": {
-      "target": "nsis"
-    }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:nint8835/iTunesRichPresence.git"
-  },
-  "author": {
-    "name": "Riley Flynn",
-    "email": "riley@rileyflynn.me"
-  },
-  "license": "SEE LICENSE",
-  "bugs": {
-    "url": "https://github.com/nint8835/iTunesRichPresence/issues"
-  },
-  "homepage": "https://github.com/nint8835/iTunesRichPresence/",
-  "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.3.3",
-    "@hot-loader/react-dom": "^16.8.6",
-    "@types/carbon-components-react": "^7.6.15",
-    "@types/carbon__icons-react": "^10.6.0",
-    "@types/discord-rpc": "^3.0.2",
-    "@types/electron-devtools-installer": "^2.2.0",
-    "@types/jest": "^24.0.13",
-    "@types/react": "^16.8.18",
-    "@types/react-dom": "^16.8.4",
-    "@types/react-redux": "^7.0.9",
-    "@types/webpack-env": "^1.13.3",
-    "@typescript-eslint/eslint-plugin": "^2.4.0",
-    "@typescript-eslint/parser": "^2.4.0",
-    "babel-loader": "^8.0.6",
-    "cross-env": "^5.1.3",
-    "css-loader": "^2.1.1",
-    "electron": "^3.1.9",
-    "electron-builder": "^22.3.2",
-    "electron-devtools-installer": "^2.2.4",
-    "eslint": "^6.5.1",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.4.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "file-loader": "^3.0.1",
-    "fork-ts-checker-webpack-plugin": "^1.3.4",
-    "html-webpack-plugin": "^3.2.0",
-    "husky": "^4.2.1",
-    "image-webpack-loader": "^4.6.0",
-    "lint-staged": "^10.0.7",
-    "node-sass": "^4.12.0",
-    "prettier": "^1.18.2",
-    "react-hot-loader": "^4.8.8",
-    "sass-loader": "^7.1.0",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "^0.23.1",
-    "typescript": "^3.4.5",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.4.1",
-    "webpack-merge": "^4.2.1"
-  },
-  "dependencies": {
-    "@carbon/icons-react": "^10.8.2",
-    "carbon-components": "^10.9.3",
-    "carbon-components-react": "^7.9.3",
-    "discord-rpc": "^3.1.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "register-scheme": "github:devsnek/node-register-scheme"
-  }
 }

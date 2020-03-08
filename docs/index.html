@@ -1,0 +1,236 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>itunesrichpresence</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">itunesrichpresence</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>itunesrichpresence</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#electron-react-typescript" id="electron-react-typescript" style="color: inherit; text-decoration: none;">
+					<h1>electron-react-typescript</h1>
+				</a>
+				<a href="#a-boilerplate-for-an-easy-start-with-typescript-react-and-electron" id="a-boilerplate-for-an-easy-start-with-typescript-react-and-electron" style="color: inherit; text-decoration: none;">
+					<h3>A Boilerplate for an Easy Start with TypeScript, React, and Electron.</h3>
+				</a>
+				<p><a href="https://reactjs.org/"><img src="docs/img/react.png" alt="React"></a>
+					<a href="https://webpack.js.org/"><img src="docs/img/webpack.png" alt="Webpack"></a>
+					<a href="https://www.typescriptlang.org/"><img src="docs/img/ts.png" alt="TypeScript"></a>
+					<a href="https://electronjs.org/"><img src="docs/img/electron.png" alt="Electron"></a>
+					<a href="https://redux.js.org/"><img src="docs/img/redux.png" alt="Redux"></a>
+				<a href="https://facebook.github.io/jest/"><img src="docs/img/jest.png" alt="Jest"></a></p>
+				<p><a href="https://electronjs.org/">Electron</a> application boilerplate based on <a href="https://reactjs.org/">React</a>, <a href="https://redux.js.org/">Redux</a>, and <a href="https://webpack.js.org/">Webpack</a> for rapid application development using <a href="https://www.typescriptlang.org/">TypeScript</a>.</p>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
+				<p>Clone the repository with Git:</p>
+				<pre><code class="language-bash">git <span class="hljs-built_in">clone</span> --depth=1 git@github.com:Robinfr/electron-react-typescript.git &lt;your-project-name&gt;</code></pre>
+				<p>And then install the dependencies:</p>
+				<pre><code class="language-bash"><span class="hljs-built_in">cd</span> &lt;your-project-name&gt;
+npm install</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p>Both processes have to be started <strong>simultaneously</strong> in different console tabs:</p>
+				<pre><code class="language-bash">npm run start-renderer-dev
+npm run start-main-dev</code></pre>
+				<p>This will start the application with hot-reload so you can instantly start developing your application.</p>
+				<p>You can also run do the following to start both in a single process:</p>
+				<pre><code class="language-bash">npm run start-dev</code></pre>
+				<a href="#packaging" id="packaging" style="color: inherit; text-decoration: none;">
+					<h2>Packaging</h2>
+				</a>
+				<p>We use <a href="https://www.electron.build/">Electron builder</a> to build and package the application. By default you can run the following to package for your current platform:</p>
+				<pre><code class="language-bash">npm run dist</code></pre>
+				<p>This will create a installer for your platform in the <code>releases</code> folder.</p>
+				<p>You can make builds for specific platforms (or multiple platforms) by using the options found <a href="https://www.electron.build/cli">here</a>. E.g. building for all platforms (Windows, Mac, Linux):</p>
+				<pre><code class="language-bash">npm run dist -- -mwl</code></pre>
+				<a href="#husky-and-prettier" id="husky-and-prettier" style="color: inherit; text-decoration: none;">
+					<h2>Husky and Prettier</h2>
+				</a>
+				<p>This project comes with both Husky and Prettier setup to ensure a consistent code style. </p>
+				<p>To change the code style, you can change the configuration in <code>.prettierrc</code>. </p>
+				<p>In case you want to get rid of this, you can removing the following from <code>package.json</code>:</p>
+				<ol>
+					<li>Remove <code>precommit</code> from the <code>scripts</code> section</li>
+					<li>Remove the <code>lint-staged</code> section</li>
+					<li>Remove <code>lint-staged</code>, <code>prettier</code>, <code>eslint-config-prettier</code>, and <code>husky</code> from the <code>devDependencies</code></li>
+				</ol>
+				<p>Also remove all mentions of Prettier from the <code>extends</code> section in <code>.eslintrc.json</code>.</p>
+				<a href="#about-this-project" id="about-this-project" style="color: inherit; text-decoration: none;">
+					<h2>About this project</h2>
+				</a>
+				<p>This project was set up from scratch but is heavily influenced by the <a href="https://github.com/chentsulin/electron-react-boilerplate">Electron React Boilerplate project</a> and <a href="https://github.com/piotrwitek/react-redux-typescript-guide">React Redux TypeScript guide</a>.</p>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p>MIT © <a href="https://github.com/Robinfr">R. Franken</a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_main_itunes_index_.html">&quot;main/itunes/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_main_itunes_types_.html">&quot;main/itunes/types&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_main_itunes_windows_bridge_.html">&quot;main/itunes/windows/bridge&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_main_itunes_windows_utils_.html">&quot;main/itunes/windows/utils&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_main_main_.html">&quot;main/main&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_main_presence_presencemanager_.html">&quot;main/presence/<wbr>Presence<wbr>Manager&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_renderer_app_.html">&quot;renderer/app&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_renderer_components_application_.html">&quot;renderer/components/<wbr>Application&quot;</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_renderer_components_navbar_.html">&quot;renderer/components/<wbr>Nav<wbr>Bar&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

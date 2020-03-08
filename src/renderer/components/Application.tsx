@@ -14,7 +14,7 @@ const Application = () => {
             <NavBar />
             <Content>
                 <Form>
-                    <FormGroup>
+                    <FormGroup legendText="">
                         <TextInput
                             labelText="State"
                             id="state"
@@ -24,7 +24,7 @@ const Application = () => {
                             }}
                             />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup legendText="">
                         <TextInput
                             labelText="Details"
                             id="details"
@@ -40,6 +40,13 @@ const Application = () => {
                             ipcRenderer.send('update-presence', stateText, detailsText);
                         }}>
                         Apply presence
+                    </Button>
+                    <Button
+                        renderIcon={WatsonHealthLaunchStudy_120}
+                        onClick={() => {
+                            ipcRenderer.send('get-song');
+                        }}>
+                        Get current song
                     </Button>
                 </Form>
             </Content>
