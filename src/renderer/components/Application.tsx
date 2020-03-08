@@ -8,6 +8,7 @@ import './index.scss';
 import { NavBar } from './NavBar';
 import { PresencePage } from './pages/PresencePage';
 import { SettingsPage } from './pages/SettingsPage';
+import { PlayerState } from '../../main/itunes/types';
 
 const useStyles = createUseStyles({
     content: {
@@ -24,7 +25,18 @@ const Application = () => {
                 <AnimatePresence exitBeforeEnter initial={false}>
                     <Switch>
                         <Route path="/settings" component={SettingsPage} />
-                        <Route path="/" component={PresencePage} />
+                        <Route path="/paused">
+                            <PresencePage
+                                key="paused"
+                                playerState={PlayerState.ITPlayerStateStopped}
+                            />
+                        </Route>
+                        <Route path="/">
+                            <PresencePage
+                                key="playing"
+                                playerState={PlayerState.ITPlayerStatePlaying}
+                            />
+                        </Route>
                     </Switch>
                 </AnimatePresence>
             </Content>

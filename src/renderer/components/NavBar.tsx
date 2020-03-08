@@ -1,4 +1,4 @@
-import { Blog16, Close20, Settings16 } from '@carbon/icons-react';
+import { Close20, Pause16, Play16, Settings16 } from '@carbon/icons-react';
 import {
     Header,
     HeaderGlobalAction,
@@ -28,7 +28,13 @@ export const NavBar = withRouter(({ history }) => (
         </HeaderGlobalBar>
         <SideNav isRail>
             <SideNavItems>
-                <SidebarLink icon={Blog16} route="/" history={history} text="Presence" />
+                <SidebarLink icon={Play16} route="/" history={history} text="Playing Presence" />
+                <SidebarLink
+                    icon={Pause16}
+                    route="/paused"
+                    history={history}
+                    text="Paused Presence"
+                />
                 <SidebarLink
                     icon={Settings16}
                     route="/settings"

@@ -1,11 +1,15 @@
-import { FormGroup, TextInput } from 'carbon-components-react';
+import { FormGroup, TextInput, Tabs, Tab } from 'carbon-components-react';
 import * as React from 'react';
 import { Page } from './Page';
+import { StateConfigEditor } from '../tokens/StateConfigEditor';
+import { PlayerState } from '../../../main/itunes/types';
 
-export const PresencePage: React.FunctionComponent<{}> = () => (
+type PresencePagePropTypes = {
+    playerState: PlayerState;
+};
+
+export const PresencePage: React.FunctionComponent<PresencePagePropTypes> = ({ playerState }) => (
     <Page>
-        <FormGroup legendText="Placeholder">
-            <TextInput labelText="" id="state" />
-        </FormGroup>
+        <StateConfigEditor playerState={playerState} />
     </Page>
 );
