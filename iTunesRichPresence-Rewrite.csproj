@@ -104,6 +104,7 @@
     <Compile Include="DiscordRpc.cs" />
     <Compile Include="Tokens\AlbumToken.cs" />
     <Compile Include="Tokens\ArtistToken.cs" />
+    <Compile Include="Tokens\YearToken.cs" />
     <Compile Include="Tokens\IToken.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
