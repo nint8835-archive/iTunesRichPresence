@@ -37,7 +37,7 @@ namespace iTunesRichPresence_Rewrite {
 
             ITunes = new iTunesApp();
 
-            _timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(15)};
+            _timer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(1)};
             _timer.Tick += Timer_OnTick;
             _timer.Start();
 
@@ -132,10 +132,14 @@ namespace iTunesRichPresence_Rewrite {
             if (_currentState != ITPlayerState.ITPlayerStatePlaying) {
                 presence.details = TruncateString(RenderString(Settings.Default.PausedTopLine));
                 presence.state = TruncateString(RenderString(Settings.Default.PausedBottomLine));
+                presence.smallImageKey = "pause";
+                presence.smallImageText = "Paused";
             }
             else {
                 presence.details = TruncateString(RenderString(Settings.Default.PlayingTopLine));
                 presence.state = TruncateString(RenderString(Settings.Default.PlayingBottomLine));
+                presence.smallImageKey = "play";
+                presence.smallImageText = "Playing";
                 if (Settings.Default.DisplayPlaybackDuration) {
                     presence.startTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() - _currentPosition;
                     presence.endTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() +
