@@ -1,19 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Interop;
-using iTunesLib;
 using iTunesRichPresence_Rewrite.Properties;
 using MahApps.Metro;
-using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using Octokit;
@@ -47,7 +45,22 @@ namespace iTunesRichPresence_Rewrite {
             };
 
             ThemeComboBox.ItemsSource = ThemeManager.Accents.Select(accent => accent.Name);
-            ThemeComboBox.SelectedItem = Settings.Default.Accent;
+
+            Settings conf = Settings.Default;
+
+            try
+            {
+                ThemeComboBox.SelectedItem = conf.Accent;
+            }
+            catch (ConfigurationErrorsException err)
+            {
+                string fileName = ((ConfigurationErrorsException)err.InnerException).Filename;
+                File.Delete(fileName);
+                System.Windows.MessageBox.Show("Your configuration file is corrupted and restored to default, please reconfigure");
+                System.Windows.Forms.Application.Restart();
+                Close();
+            }
+
 
             ThemeManager.ChangeAppStyle(Application.Current,
                                         ThemeManager.GetAccent(Settings.Default.Accent),
