@@ -9,7 +9,7 @@
 
 ## Usage
 
-* Download latest release (iTunesRichPresence.zip) from [releases page](https://github.com/nint8835/iTunesRichPresence/releases)
+* Download latest release (iTunesRichPresence.zip) from [releases page](https://github.com/nint8835-archive/iTunesRichPresence/releases)
 * Extract the zip file
 * Run iTunesRichPresence-Rewrite.exe
 * Start listening to music
