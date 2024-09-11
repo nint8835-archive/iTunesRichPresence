@@ -1,7 +1,7 @@
 # iTunesRichPresence
 
-[![Discord](https://discordapp.com/api/guilds/422759073499578411/widget.png)](https://discord.gg/57a8dqb)
-[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/O5O2FSWT)
+> [!IMPORTANT]
+> iTunesRichPresence is no longer maintained, and no support is provided. Existing releases may continue to work, but they may break in the future.
 
 ![Example](example.png)
 
@@ -20,9 +20,5 @@ Your discord should now display your currently playing music from iTunes
 
 * Build project using Visual Studio
 * Place a copy of discord-rpc.dll in the same folder as the executable. You can get a copy of this file from [here.](https://github.com/discordapp/discord-rpc/releases)
-
-## Contact
-
-If you would like to contact me, join [the Discord server](https://discord.gg/57a8dqb)
 
 **Note: there are no plans for a Mac version of this software.**
